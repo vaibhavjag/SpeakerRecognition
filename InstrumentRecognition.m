@@ -1,25 +1,48 @@
-%% collect data %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Convert Youtube Videos to audio wav files.
-%  Create 3 databases for samples of length 5s , 10s, 15s
-%% extract features %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Preprocessing
-%  Segment each sample into overlapping frames. Try using enframes from voicebox or write a script to do it 
-%% MFCC
-%  Use voicebox to get MFCC, Delta MFCC, Delta-Delta MFCC
-%% ASF
-%  Use Experimental ASF code to obtain ASF Features
-%% Other Features
-%
-%% Machine Learning %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Preprocessing
-%  Split the data into training1, training2, and testing data (Use K-fold
-%  Cross-Validation on the training data or overall?)
-%% GMM for individual codebooks (Using training1 data)
-%  Obtain intial values through k-means
-%  Perform EM to get GMMs
-%  Identify Classes as instruments
-%% Weighting codebooks (Using training2 data)
-%  
-%% Testing
-%  Test the models on unseen testing data (also check results on training data again) and report the results
+clc;
+clear;
+warning off;
+
+%settings
+instruments = {'piano';'violin';'trumpet';'flute';'bassoon';'oboe'};
+features = {'asf';'mfcc'};
+asfPresent = 1;
+noOfInstruments = size(instruments,1);
+noOfFeatures = size(features,1);
+nFilesGMM = 25;
+nFilesCB = 25;
+nFilesTest = 25;
+fileLen = 10;
+dataDIR = strcat('C:\Users\Vaibhav\Documents\MATLAB\SpeakerRecognition\dataset\',int2str(fileLen),'second\');
+load(strcat('asf',int2str(fileLen),'.mat'));
+save('settings.mat');
+%GMM
+
+model = generateIRM();
+
+save('model.mat','model')
+
 %%
+%CodeBook
+[ model2 , weight ,featureQuality , fconfusion ] = trainCodebook( model );
+
+disp('Feature Quality');
+disp(featureQuality);
+disp('Feature Confusion');
+disp(fconfusion);
+
+save('model.mat','model','model2','weight');
+
+%%
+%testing
+
+[ accuracy1, confusion1 ] = testModel( 'regression' );
+disp('Accuracy - Regression');
+disp(accuracy1);
+disp('Confusion - Regression');
+disp(confusion1);
+
+[ accuracy2, confusion2 ] = testModel( 'feature quality' );
+disp('Accuracy - Feature Quality');
+disp(accuracy2);
+disp('Confusion - Feature Quality');
+disp(confusion2);
