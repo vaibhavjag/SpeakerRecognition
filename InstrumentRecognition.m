@@ -4,7 +4,7 @@ warning off;
 
 %settings
 instruments = {'piano';'violin';'trumpet';'flute';'bassoon';'oboe'};
-features = {'asf';'mfcc'};
+features = {'asf';'mfcc';'temporal'};
 asfPresent = 1;
 noOfInstruments = size(instruments,1);
 noOfFeatures = size(features,1);
@@ -12,7 +12,7 @@ nFilesGMM = 25;
 nFilesCB = 25;
 nFilesTest = 25;
 fileLen = 10;
-dataDIR = strcat('C:\Users\Vaibhav\Documents\MATLAB\SpeakerRecognition\dataset\',int2str(fileLen),'second\');
+dataDIR = strcat(pwd,'\dataset\',int2str(fileLen),'second\');
 load(strcat('asf',int2str(fileLen),'.mat'));
 save('settings.mat');
 %GMM
