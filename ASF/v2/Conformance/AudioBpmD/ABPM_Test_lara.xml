@@ -1,0 +1,5 @@
+<AudioDescriptor xsi:type="AudioTempoType" loLimit="60" hiLimit="140" hopSize="400">
+  <SeriesOfScalar totalSampleNum="2">
+    <Raw> 119.72	120.19	    <raw>
+  </SeriesOfScalar>
+</AudioDescriptor>

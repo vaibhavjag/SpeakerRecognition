@@ -1,0 +1,32 @@
+Technique	CrossChannelCorrelationType
+Document	ISO/IEC WD 15938-4
+Name		Joerg Bitzer, Stefan Kudras, Houpert Digital Audio, Germany
+EMail		j.bitzer@hda.de
+Type		low-level audio descriptor extraction tool
+External Libraries  	--
+Related Ds/DSs	--
+Used Ds/DSs	--
+Input		samples of a Wav file
+Extraction	Yes
+Client Appl	NA
+Summary		This component is the CrossChannelCorrelation descriptor extraction tool
+Strong Points 	--	
+Limitations	--
+Known Problems 	--	
+Parameters	auData : 2D matrix : audiostream, N channels in columns
+   		fs : number : sample frequency of the signal
+   		channels : vector : channels to analyze (if empty all channels are used)
+   		szXMLout (optional) : string : name of output XML-file. if not given no XML-output
+
+Output		C : vector : vector of length N containing the values of the CrossChannelCorrelation with:
+			     N = (number  of channels) - 1
+
+Usage		1. run matlab
+		2. change the working directory to the directory containing the function
+		3. call the function 'CrossChannelCorrelationD' with the required parameters
+
+Function call example 
+
+>> [C] = CrossChannelCorrelationD(data,44100,[1 2],'CrossChannelCorrelation.xml'); 
+
+

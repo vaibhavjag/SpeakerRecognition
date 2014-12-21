@@ -1,0 +1,18 @@
+Technique	Silence-Extraction
+Document	None
+Name	Bernhard Feiten, Deutsche Telekom, T-Systems Berkom
+EMail	bernhard.feiten@t-systems.de
+Type	Application
+External Libraries	none
+Related Ds/DSs		none
+Used Ds/DSs
+Input		wav-file, 
+Extraction	xml describing silent intervall
+Client Appl	Extraction
+Summary		Demonstrates extraction of silence description
+Strong Points	none
+Limitations	none
+Known Problems	simple power based extractor, channels are combined
+Parameters	SilenceThreshold (e.g.-85), SignalThreshold (e.g. -80), MinDuration (e.g. 0.3)
+
+END

@@ -1,0 +1,40 @@
+Technique	AudioSpectrumFlatnessType
+Document	ISO/IEC WD 15938-4
+Name		Melanie Jackson, Thibaut Sacreste - University of Wollongong, Australia
+EMail		tas48@uow.edu.au
+Type		low-level audio descriptor extraction tool
+External Libraries 	--
+Related Ds/DSs	--
+Used Ds/DSs	--
+Input		'.wav' or '.au' file
+Extraction	Yes
+Client Appl	NA
+Summary		This component is the AudioSpectrumFlatness descriptor extraction tool
+Strong Points 	--	
+Limitations	Only process '.wav' and '.au' audio files.
+		The whole audio file is processed
+Known Problems 	--	
+Parameters	audioFile : string : name of the audio file to process 
+		hopSize : string : hopsize in the mpeg7 specified format
+		loEdge : lower edge frequency
+		hiEdge : upper edge frequency
+		writeXML : boolean : flag for the generation of the XML file
+		XMLFile (optional) : string : name of the generated XML file
+		
+Output		AudioSpectrumFlatness : 2-D matrix : M*N matrix containing the ASF values with:
+					  	 - M=number of audio frames
+						 - N=number of frequency bands
+		lo_edge : lower edge frequency
+		hi_edge	: upper edge frequency
+		XMLFile : string : name of the generated XML file
+		
+Usage		1. run matlab
+		2. change the working directory to the directory containing the function
+		3. call the function 'mpeg7ASF' with the required parameters
+
+
+%%%%>> [AudioSpectrumFlatness,  XMLFile] = mpeg7ASF('test.wav','PT10N1000F',1,'ASF.xml')
+
+New function call example :
+>> [AudioSpectrumFlatness ,loEdge,hiEdge,XMLFile ] =  AudioSpectrumFlatnessD('test.wav','PT30N1000F',250, 4000, 1, 'ASF.xml');
+

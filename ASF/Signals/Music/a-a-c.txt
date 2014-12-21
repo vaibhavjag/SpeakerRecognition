@@ -1,0 +1,21 @@
+"A-A-C"
+
+		Contents			hrr 05/22/01
+		========
+
+This archive contains a short musical test sequence based on
+the musical theme "A"-"A"-"C". The sound excerpt is composed, 
+arranged and produced by Juergen Herre.
+Permission for usage/distribution is granted for purposes of 
+MPEG-2 AAC (ISO/IEC 13818-7), MPEG-4 Audio (ISO/IEC 14496-3)
+and MPEG-7 (ISO/IEC 15938-5) conformance work & technology 
+demonstration only.
+
+
+All files are WAVE files sampled at 44.1 kHz.                           
+
+                                                                     
+File Name               Description                                  
+=======================================                              
+a-a-c_song_mono.wav       Mono version                                 
+a-a-c_song_stereo.wav     Stereo version                               

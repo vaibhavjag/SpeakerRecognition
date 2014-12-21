@@ -1,0 +1,33 @@
+% AudioSpectrumBasisType - basis components of a spectrum matrix
+%                         computes basis functions and projection coefficients.
+%
+% [V,delta]=AudioSpectrumBasis(X, k, DDL_FLAG)
+%
+% Inputs:
+% X - spectrum data matrix ( t x n, t=time points, n=spectral channels)
+% k - number of components to extract
+% DDL_FLAG - 1=write XML output. [0]
+%
+% Outputs
+% V - n x k matrix of basis functions
+% delta - k singular values of V
+
+% Copyright, 1997-2002 Michael A. Casey, MIT Media Lab, MERL
+% All Rights Reserved
+
+
+Technique	AudioSpectrumBasisType
+Document	ISO/IEC WD 15938-4
+Name		Michael Casey
+EMail		mkc@media.mit.edu
+Type		low-level audio descriptor extraction tool
+External Libraries 	--
+Related Ds/DSs	AudioSpectrumProjectionD, SoundModelDS, SoundClassificationModelDS
+Used Ds/DSs	audioSpectrumAttributeGroup
+Input		Wav file
+Extraction	Yes
+Client Appl	NA
+Summary		Extract a set of basis functions from a list of wav files 
+Strong Points 	-- 
+
+		 

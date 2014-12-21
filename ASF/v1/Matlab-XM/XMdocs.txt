@@ -1,0 +1,2255 @@
+=====================================================
+function f0 = AudioFundamentalFrequencyType(s,standvar,num_frames)
+% Estimate fundamental frequency
+% s is the audiosignal
+% standvar contains the parameters of the signal and analysis
+% Written By Melanie Jackson
+% Version 1.0 5 Feb 2001
+% Modified 9 Feb 2001 - Shortened maximum lag and analysis interval size.
+% Modified 19th March 2001 - Compatible to variable initialisation
+
+
+=====================================================
+function [harmonicRatio,upperLimitOfHarmonicity] = AudioHarmonicityType(auData,totalSampleNum,samplingRate) 
+%% 
+%% ----------------AudioHarmonicityType-----------------------
+%% The function of this subroutine is to describe 
+%% the degree of harmonicity of an audio signal 
+%% AudioHarmonicityType is a description of the 
+%% spread of the log-frequency power spectrum.
+%%
+%% input:
+%% -auData:                          incoming signal
+%% -totalSampleNum:                  total Sample Number of signal
+%% -samplingRate:                    sampling rate of the signal
+%% 
+%% output:
+%% -harmonicRatio:                   Series of values of the harmonic ratio
+%% -upperLimitOfHarmonicity:         Series of values of the UpperLimitOfHarmonicity
+%% 
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+% === Initialization  ===
+
+
+=====================================================
+function amplFft_SeriesOfScalar =h_amplFFT(signal,window) 
+%% file: amplFFT.m 
+%% 
+%% The function of this file is to compute the magnitude
+%% of a signal in frequency domain
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+%% === analysis parameters
+
+
+=====================================================
+function [minj_pos, H_k] = h_PeriodicSignalDetection(signal,samplingRate) 
+%% File: h_PeriodicSignalDetection.m
+%% 
+%% The algorithm is:
+%% a)	Calculate:
+%%       r_k(j) = sum(s(i+j)-s(i)).^2)/(sum(s(i).^2)+sum(s(i+j).^2))
+%% b)	Choose the minimum, and subtract it from 1:
+%%        H_k = 1- min(r(j))
+%% This value is 1 for a purely periodic signal, and it should be 
+%% close to 0 for white noise.
+%% The integration window N should be chosen equal to the largest 
+%% expected period (by default: 40 ms = 1/25Hz). The estimate can 
+%% be refined by replacing each local minimum of r_k(j)  by the minimum 
+%% of a 3-point parabolic fit centered upon it.
+%%
+%%
+%% input:
+%% -signal:                          incoming signal
+%% -samplingRate:                    sampling Rate
+%% output:
+%% -minj_pos:                        the minimum position for j
+%% -H_k:                             H_k == 1 purely periodic signal
+%%                                   H_k == 0 white noise
+%%                                   H_k ~= 1 & H_k ~=0 harmonic signal
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+%% BUILD THE TIME VECTOR
+
+
+=====================================================
+function AudioPower_SeriesOfScalar = AudioPowerType(auData,totalSampleNum,samplingRate,scalingRatio,elementNum,weight) 
+%% File: AudioPowerType.m
+%%
+%% ------------- AudioPowerType--------------------
+%%
+%% The function of this subroutine is to describe the temporally-smoothed 
+%% instantaneous power (square of waveform values).
+%%
+%% 
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function [as_mean,as_var, hiedge, XMLFile]=AudioSignature(audioFile,hiEdge,decim,writeXML,XMLFile)
+%function [as_mean,as_var]=AudioSignature(audiosignal,fs,decim)     %previous version
+% [as_mean,as_var,  XMLFile] = AudioSignature(audioFile,hiEdge,decim,writeXML,XMLFile)
+% This function extracts the values of the MPEG-7 Audio AudioSignature DS
+% where audiosignal contains the raw data to be analysed
+% fs is the sampling frequency of this data
+% decim optionally specifies the decimation factor (default: 32)
+%
+% s = AudioSignature(audiosignal,fs,decim) returns the data as XML in string variables
+%
+% v1.0 Written 12th October 2001 by Juergen Herre
+% v2.0 Written 30th April   2002 by Juergen Herre
+% Modified 30/04/2002 by Thorsten Kastner -  added XML-Output 
+%                                         -  hiEdge can be set; loedge is fixed at 250Hz
+% Modified 11/06/2002 by Thorsten Kastner -  added return value hiedge; returns exact value for upper edge frequency
+%--------------------------------------------------------------------
+% audioFile is the name of the audio file to process
+% 2 types of files can be read: .wav and .au 
+% writeXML is a flag for the generation of the XML file
+% writeXML=0 -> no generation
+% writeXML=1 -> generation
+% XMLFile is the name of the XML file to be generated (optional)
+
+
+=====================================================
+function [V,env]=AudioSpectrumBasisD(X, NUM_IC, varargin)
+% AudioSpectrumBasisType - Eigen spectra subspace components of a spectrum matrix.
+%                          Optionally extracts independent components
+%                          (see optional arguments)
+%
+% [ASB,env]=AudioSpectrumBasis(ARG1, k, [Optional Arguments])
+%
+% Inputs:
+%
+% ARG1 - AudioSpectrumBasisD matrix ( t x n, t=time points, n=spectral channels)
+% ARG1 - if ARG1 is a STRING then == audio file name to extract from
+% k - number of components to extract
+%
+% The following variables are optional, and are specified using
+% ['parameter', value pairs] on the command line.
+%
+%    'JADE'                0             - Flag to indicate use of JADE (requires jade.m to be installed)
+%    'hopSize'            'PT10N1000F'  - AudioSpectrumEnvelopeD hopSize
+%    'loEdge'              62.5,        - AudioSpectrumEnvelopeD low Hz
+%    'hiEdge'              16000,       - AudioSpectrumEnvelopeD high Hz
+%    'octaveResolution'    '1/8'        - AudioSpectrumEnvelopeD resolution
+%    'outputFile'           ''          - Filename for Model output [stem+mp7.xml]
+%
+% Outputs:
+%
+% ASB - n x k matrix of basis functions
+% env - L2-norm envelope of log Spectrogram data
+% ASB is written to XML file outputFile if specified in optional arguments.
+% Copyright, 1997-2003 Michael A. Casey, MIT Media Lab, MERL, The City University (London),
+% All Rights Reserved
+
+
+=====================================================
+function [AudioSpectrumCentroid, XMLFile] =AudioSpectrumCentroidType(audioFile,hopSize,writeXML,XMLFile)
+% This function describes the centre of gravity of log-frequency power spectrum
+% audiosignal is Audio data
+% Written by Melanie Jackson
+% Version 1.0 12 Jan 2001
+% Modified 16 March 2001 - Removed spectrum extraction to generic function
+% Modified 16/04/2002 by Thibaut Sacreste - add XML generation
+% Modified 19/04/2002 by Thibaut Sacreste - changed to be a stand alone function
+% Modified 03/05/2003 by Holger Crysandt - power spectrum bug-fix, see w5048 for details
+%--------------------------------------------------------------------
+% audioFile is the name of the audio file to process
+% 2 types of files can be read: .wav and .au 
+% writeXML is a flag for the generation of the XML file
+% writeXML=0 -> no generation
+% writeXML=1 -> generation
+% XMLFile is the name of the XML file to be generated (optional)
+%--------------------------------------------------------------------
+% Initialisation:
+
+
+=====================================================
+function [AudioSpectrumEnvelope, attributegrp, map, XMLFile] = AudioSpectrumEnvelopeD(audioFile,hopSize,attributegrp,writeXML,XMLFile,map)
+%[AudioSpectrumEnvelope, attributegrp, map, XMLFile] = AudioSpectrumEnvelopeType(audioFile,hopSize,attributegrp,writeXML,XMLFile,map)
+% This function determines an AudioSpectrumEnvelope
+% and also returns the map from linear to log bands.
+%
+%
+% Written by Melanie Jackson
+% Based on ISO/IEC WD 15938-4
+%
+% Version 2.0 15/12/2000
+% Modified 18/12/2000 - Debugging
+% Modified 9/1/2001 - Complete function description
+% Modified 16th March 2001 - Removed common sepectrum analysis to generic function
+% Modified 15/04/2002 by Thibaut Sacreste - add XML generation
+% Modified 18/04/2002 by Thibaut Sacreste - changed to be a stand alone function
+% Modified 03/05/2003 by Holger Crysandt - power spectrum bug-fix, see w5048 for details
+%--------------------------------------------------------------------
+% audioFile is the name of the audio file to process
+% 2 types of files can be read: .wav and .au 
+% attributegrp is a structure containing
+% the attributes of the AudioSpectrumEnvelope
+% as defined in the audioSpectrumAttributeGrp:
+% loEdge, hiEdge, octaveResolution
+% writeXML is a flag for the generation of the XML file
+% writeXML=0 -> no generation
+% writeXML=1 -> generation
+% XMLFile is the name of the XML file to be generated (optional)
+%--------------------------------------------------------------------
+% Initialisation:
+
+
+=====================================================
+function [AudioSpectrumFlatness ,lo_edge, hi_edge, XMLFile ] = AudioSpectrumFlatnessType(audioFile,hopSize,loEdge,hiEdge,writeXML,XMLFile)
+% This function describes the spectral flatness measure of the audio signal
+% The frequency range is divided into numbands logarithmically spaced bands
+% of 1/4 octave width, starting at loEdge up to hiEdge
+% Written by Melanie Jackson & Juergen Herre
+% Version 2.0 25 July 2001
+% Modified by Melanie Jackson 10 December 2001
+% Modified by MJ 17 January 2002
+% Modified 16/04/2002 by Thibaut Sacreste - add XML generation
+% Modified 19/04/2002 by Thibaut Sacreste - changed to be a stand alone function
+% Modified 30/04/2002 by Thorsten Kastner - changed function call (loEdge and hiEdge can be set)
+%                                         - modified check for loEdge and hiEdge
+% Modified 12/06/2002 by Thorsten Kastner - adapted coefficient grouping to variable loEdge and hiEdge
+%                                         - values for loEdge and hiEdge will be recalculated if necessary
+%--------------------------------------------------------------------
+% audioFile is the name of the audio file to process
+% 2 types of files can be read: .wav and .au 
+% writeXML is a flag for the generation of the XML file
+% writeXML=0 -> no generation
+% writeXML=1 -> generation
+% XMLFile is the name of the XML file to be generated (optional)
+%--------------------------------------------------------------------
+% Initialisation:
+% Read in audio file
+
+
+=====================================================
+function [P,maxenv] = AudioSpectrumProjectionD(X,V,varargin)
+% [ASP,maxenv] = AudioSpectrumProjectionD(ARG1, V, XML)
+%
+% Inputs:
+% ARG1 - AudioSpectrumEnvelopeD matrix ( t x n, t=time points, n=spectral channels)
+% ARG1 - if ARG1 is a STRING then == audio file name to extract from
+% V = matrix containing AudioSpectrumBasisD values (n x k, n=frequency bins, k=basis functions)
+%
+% The following variables are optional, and are specified using
+% ['parameter', value pairs] on the command line.
+%
+%    'hopSize'            'PT10N1000F'  - AudioSpectrumEnvelopeD hopSize
+%    'loEdge'              62.5,        - AudioSpectrumEnvelopeD low Hz
+%    'hiEdge'              16000,       - AudioSpectrumEnvelopeD high Hz
+%    'octaveResolution'    '1/8'        - AudioSpectrumEnvelopeD resolution
+%    'outputFile'           ''          - Filename for Model output [stem+mp7.xml]
+%
+% Output:
+% ASP = t x (1 + k) matrix where each row contains 1 x L2-norm envelope
+% coefficient and k x spectral projection coefficients.
+% maxenv = maximum value of L2-norm envelope (used for SoundModelDS training data normalisation) 
+% ASP is written to XML file outputFile if specified in optional arguments.
+% Copyright, 1997-2003 Michael A. Casey, MIT Media Lab, MERL, The City University (London),
+% All Rights Reserved
+
+
+=====================================================
+function [AudioSpectrumSpread, XMLFile] = AudioSpectrumSpreadType(audioFile,hopSize,writeXML,XMLFile)
+% This function describes the second moment of the log-frequency power spectrum
+% fftout is the magnitude of the windowed FFT
+% Written by Melanie Jackson
+% Version 1.0 12 Jan 2001
+% Modified 16 March 2001 - Removed spectrum extraction to generic function
+% Modified 16/04/2002 - add XML generation
+% Modified 19/04/2002 by Thibaut Sacreste - changed to be a stand alone function
+% Modified 03/05/2003 by Holger Crysandt - power spectrum bug-fix, see w5048 for details
+%--------------------------------------------------------------------
+% audioFile is the name of the audio file to process
+% 2 types of files can be read: .wav and .au 
+% writeXML is a flag for the generation of the XML file
+% writeXML=0 -> no generation
+% writeXML=1 -> generation
+% XMLFile is the name of the XML file to be generated (optional)
+%--------------------------------------------------------------------
+% Initialisation:
+
+
+=====================================================
+function [Raw, maxValues, minValues, rootFirstValues,varianceScalewiseValues] = AudioWaveformType(auData,totalSampleNum,scalingRatio,elementNum,weight_flag, weight, write_flag,rootFirst) 
+%%% File: AudioWaveformEnvelope.m
+%%
+%% -------------- AudioWaveformEnvelope Description---------------
+%%
+%% The function of this subroutine is to display the audio waveform 
+%% using a small set of values that represent extrema (min and max) 
+%% of sets of samples. Min and max are stored as scalable time series 
+%% within the AudioWaveformEnvelopeType.
+%% 
+%% 
+%% 
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+% function [HarmonicSpectralCentoid, HarmonicSpectralDeviation, HarmonicSpectralSpread, HarmonicSpectralVariation, LogAttackTime] = ...
+%				mp7DSHarmonicInstrumentTimbre(FILENAME, writeXML, XMLFile);
+%
+% INPUTS:
+% =======
+% - FILENAME [ascii string]: name of the file to be processed
+% - writeXML 					: a flag for the generation of the XML file
+% 										writeXML=0 -> no generation
+% 										writeXML=1 -> generation
+% - XMLFile 					: name of the XML file to be generated (optional)
+%
+% OUTPUTS:
+% ========
+% - HarmonicSpectralCentoid, 
+% - HarmonicSpectralDeviation, 
+% - HarmonicSpectralSpread, 
+% - HarmonicSpectralVariation, 
+% - LogAttackTime
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function[HarmonicSpectralCentoid, HarmonicSpectralDeviation, HarmonicSpectralSpread, HarmonicSpectralVariation, LogAttackTime] = ...
+
+
+=====================================================
+% function [HarmonicSpectralCentroid] = mp7DHarmonicSpectralCentroid(freqh_v, amplh_v, H)
+%
+% compute instantaneous harmonic spectral centroid
+%
+% INPUTS:
+% =======
+% - freqh_v : vector containing harmonic frequencies [Hz]
+% - amplh_v : vector containing harmonic amplitudes  [lin]
+% - H       : maximum number of harmonic taken into accounts
+%
+% OUTPUTS:
+% ========
+% - HarmonicSpectralCentroid    : instantaneous harmonic spectral centroid
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [HarmonicSpectralCentroid] = mp7DHarmonicSpectralCentroid(freqh_v, amplh_v, H)
+
+
+=====================================================
+% function [HarmonicSpectralDeviation] = mp7DHarmonicSpectralDeviation(amplh_v, SE_v, H)
+%
+% compute instantaneous harmonic spectral deviation
+%
+% INPUTS:
+% =======
+% - amplh_v : vector containing harmonic amplitudes
+% - SE_v    : vector containing the estimation  of the Spectral Envelope at the position of the harmonic peaks
+% - H       : maximum number of harmonic taken into accounts
+%
+% OUTPUTS:
+% ========
+% - HarmonicSpectralDeviation    : instantaneous harmonic spectral deviation
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [HarmonicSpectralDeviation] = mp7DHarmonicSpectralDeviation(amplh_v, SE_v, H)
+
+
+=====================================================
+% function [HarmonicSpectralDeviation] = mp7DHarmonicSpectralDeviationCorrigendum(amplh_v, SE_v, H)
+%
+% CORRIGENDUM VERSION (w4770) 2002/07/22 
+%
+% compute instantaneous harmonic spectral deviation
+%
+% INPUTS:
+% =======
+% - amplh_v : vector containing harmonic amplitudes
+% - SE_v    : vector containing the estimation  of the Spectral Envelope
+%             at the position of the harmonic peaks
+% - H       : maximum number of harmonic taken into accounts
+%
+% OUTPUTS:
+% ========
+% - HarmonicSpectralDeviation    : instantaneous harmonic spectral deviation
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [HarmonicSpectralDeviation] = mp7DHarmonicSpectralDeviationCorrigendum(amplh_v, SE_v, H)
+
+
+=====================================================
+% function [HarmonicSpectralSpread] = mp7DHarmonicSpectralSpread(freqh_v, amplh_v, H)
+%
+% compute instantaneous harmonic spectral spread
+%
+% INPUTS:
+% =======
+% - freqh_v : vector containing harmonic frequencies
+% - amplh_v : vector containing harmonic amplitudes
+% - H       : maximum number of harmonic taken into accounts
+%
+% OUTPUTS:
+% ========
+% - HarmonicSpectralSpread    : instantaneous harmonic spectral spread
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [HarmonicSpectralSpread] = mp7DHarmonicSpectralSpread(freqh_v, amplh_v, H)
+
+
+=====================================================
+% function [HarmonicSpectralVariation] = mp7DHarmonicSpectralVariation(x1_v, x2_v, H)
+%
+% INPUTS:
+% =======
+% - x1_v : vector containing harmonic amplitude at frame F-1
+% - x2_v : vector containing harmonic amplitudes at frame F
+% - H    : maximum number of harmonic taking into accounts
+%
+% OUTPUTS:
+% ========
+% - HarmonicSpectralVariation : instantaneous harmonic spectral variation
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [HarmonicSpectralVariation] = mp7DHarmonicSpectralVariation(x1_v, x2_v, H)
+
+
+=====================================================
+function optsout = h_AudioSpectrumBasisOptions(args)
+%optsout = h_AudioSpectrumBasisOptions(args)
+%
+% The following variables are optional, and are specified using
+% 'parameter' value pairs on the command line.
+%
+%    'JADE'                0             - Flag to indicate use of JADE (requires jade.m to be installed)
+%    'hopSize'            'PT10N1000F'  - AudioSpectrumEnvelopeD hopSize
+%    'loEdge'              62.5,        - AudioSpectrumEnvelopeD low Hz
+%    'hiEdge'              16000,       - AudioSpectrumEnvelopeD high Hz
+%    'octaveResolution'    '1/8'        - AudioSpectrumEnvelopeD resolution
+%    'outputFile'           ''          - Filename for Model output [stem+mp7.xml]
+%
+function params = struct_params(varargin)
+
+
+=====================================================
+% function [energy_bp] = Fcalculenv(data_v, sr_hz, cutfreq_hz, dsfact)
+%
+% INPUTS
+% ======
+% - data_v      : vector containing the data of the soundfile
+% - sr_hz       : sampling rate of the soundfile
+% - cutfreq_hz  : cutting frequency for low-pass filtering of the energy
+% - dsfact      : down-sampling factor for the energy [integer] (1=Fe, 2=Fe/2, 3=Fe/3, ...)
+% 
+% OUTPUTS
+% =======
+% - energy_bp   : breakpoint function 
+%                 [first colum: time [second] | second column: energy value]
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [energy_bp] = Fcalculenv(data_v, sr_hz, cutfreq_hz, dsfact)
+
+
+=====================================================
+function [quot, remn, remd] = h_fraction(num,den)
+% This function returns three values, the quotient and the remainder numerator and denominator
+% where num and den are assumed to be integers
+%
+% num/den = quot+remn/remd  
+
+
+=====================================================
+% Modified 30/04/2002 by Thorsten Kastner - zero pad (length overlap) at start and end for overlap removed; 
+%                                           because: there's no overlap in ASF
+function  [fftout,phase] = mpeg7getspec(data,v)
+% data = data(1:5004);
+
+
+=====================================================
+function standvar = mpeg7init(fs,hopsize,windowsize,window,FFTsize)
+% This function creates a structure of the default values
+% to be used throughout the descriptors
+% Written by Melanie Jackson
+% Version 1 15th March 2001
+% Modified 30/04/2002 by Thorsten Kastner - changed standard hopsize to 30ms
+%                                         - set hopsize = windowsize (no overlap for ASF)
+
+
+=====================================================
+function optsout = h_SoundModelOptions(args)
+%optsout = h_SoundModelOptions(args)
+%
+% The following variables are optional, and are specified using
+% 'parameter' value pairs on the command line.
+%
+%    'hopSize'          'PT10N1000F'
+%    'loEdge'            62.5,      
+%    'hiEdge'            16000,     
+%    'sr'                16000,     
+%    'octaveResolution'  '1/4'
+%    'outputFile'         ''
+%    'soundName'          ''
+%    'sequenceHopSize'      'PT100N1000F',
+%    'sequenceFrameLength'  'PT2500N1000F'
+function params = struct_params(varargin)
+
+
+=====================================================
+function [yo,fo,to] = h_specgram2(varargin)
+%SPECGRAM Calculate spectrogram from signal.
+%   B = SPECGRAM(A,NFFT,Fs,WINDOW,SHIFT) calculates the spectrogram for 
+%   the signal in vector A.  SPECGRAM splits the signal into overlapping 
+%   segments, windows each with the WINDOW vector and forms the columns of
+%   B with their zero-padded, length NFFT discrete Fourier transforms.  Thus
+%   each column of B contains an estimate of the short-term, time-localized
+%   frequency content of the signal A.  Time increases linearly across the 
+%   columns of B, from left to right.  Frequency increases linearly down 
+%   the rows, starting at 0.  If A is a length NX complex signal, B is a 
+%   complex matrix with NFFT rows and 
+%        k = fix((NX-NOVERLAP)/(length(WINDOW)-NOVERLAP)) 
+%   columns, where NOVERLAP = length(WINDOW)-mean(SHIFT)
+%   If A is real, B still has k columns but the higher frequency
+%   components are truncated (because they are redundant); in that case,
+%   SPECGRAM returns B with NFFT/2+1 rows for NFFT even and (NFFT+1)/2 rows 
+%   for NFFT odd.  If you specify a scalar for WINDOW, SPECGRAM uses a 
+%   Hanning window of that length.  WINDOW must have length smaller than
+%   or equal to NFFT and greater than NOVERLAP.  NOVERLAP is the number of
+%   samples the sections of A overlap.  Fs is the sampling frequency
+%   which does not effect the spectrogram but is used for scaling plots.
+%
+%   [B,F,T] = SPECGRAM(A,NFFT,Fs,WINDOW,NOVERLAP) returns a column of 
+%   frequencies F and one of times T at which the spectrogram is computed.
+%   F has length equal to the number of rows of B, T has length k. If you 
+%   leave Fs unspecified, SPECGRAM assumes a default of 2 Hz.
+%
+%   B = SPECGRAM(A) produces the spectrogram of the signal A using default
+%   settings; the defaults are NFFT = minimum of 256 and the length of A, a
+%   Hanning window of length NFFT, and NOVERLAP = length(WINDOW)/2.  You 
+%   can tell SPECGRAM to use the default for any parameter by leaving it 
+%   off or using [] for that parameter, e.g. SPECGRAM(A,[],1000)
+%
+%   See also PWELCH, CSD, COHERE and TFE.
+%   Author(s): L. Shure, 1-1-91
+%              T. Krauss, 4-2-93, updated
+%   Copyright 1988-2000 The MathWorks, Inc.
+%   $Revision: 1.6 $  $Date: 2000/06/09 22:07:35 $
+function [msg,x,nfft,Fs,window,shift] = specgramchk(P)
+
+
+=====================================================
+function [audata, totalSampleNum, Fs, bitNum, channelNum] = h_AudioSamples(aufileName) 
+%%% File: h_AudioSamples.m
+%%
+%% The function of this subroutine is to read audio samples from a sound file
+%% and to return information such like elementNum, sampling rate Fs (sample 
+%% period 1/Fs) bit number per sample and channel number. It relates to 
+%% AudioSampledType, but which is abstract and never instantiated.
+%%
+%% 
+%% 
+%% 
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 August 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function [n_out, w, trivalwin] = h_check_order(n_in)
+%CHECK_ORDER Checks the order passed to the window functions.
+% [N,W,TRIVALWIN] = h_CHECK_ORDER(N_ESTIMATE) will round N_ESTIMATE to the
+% nearest integer if it is not alreay an integer. In special cases (N is [],
+% 0, or 1), TRIVALWIN will be set to flag that W has been modified.
+%   Copyright 1988-2000 The MathWorks, Inc.
+%   $Revision: 1.4 $  $Date: 2000/06/09 20:50:37 $
+
+
+=====================================================
+% function[value] = Fevalbp(bp, t)
+%
+% interpolate breakpoint function bp at time t
+%
+% INPUTS:
+% =======
+% - bp : break point function
+%   format [first column time | second column value]
+% - t  : time
+%
+% OUTPUTS:
+% ========
+% - value : interpolated value
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function[value] = Fevalbp(bp, t)
+
+
+=====================================================
+% function [pic_struct] = Fharmo(X_m, sr_hz, f0_bp)
+%
+% INPUTS:
+% =======
+% - X_m       : FILEREAD [ascii string] or data matrix
+% - sr_hz     : sampling rate of sound file
+% - f0_bp     : breakpoint fonction de f0 (temps|valeurs)
+%
+% OUTPUTS:
+% ========
+% - pic_struct : structure .freqh_v, .amplh_lin_v
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [pic_struct] = Fharmo(X_m, sr_hz, f0_bp)
+
+
+=====================================================
+% function [HarmonicSpectralCentroid, HarmonicSpectralDeviation, HarmonicSpectralSpread, HarmonicSpectralVariation] = ...
+% 				FharmoiParam(pic_struct)
+%
+% === CORRIGENDA VERSION (w4770) 2002/07/22 
+%
+% INPUTS:
+% =======
+% - pic_struct: structure .freqh_v, .amplh_lin_v
+%
+% OUTPUTS:
+% ========
+% - hsc: harmonic spectral centroid
+% - hsd: harmonic spectral deviation
+% - hss: harmonic spectral spread
+% - hsv: harmonic spectral variation
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [HarmonicSpectralCentroid, HarmonicSpectralDeviation, HarmonicSpectralSpread, HarmonicSpectralVariation] = ...
+
+
+=====================================================
+% function [freqh_hz_v, amplh_lin_v] = Fharmopic(H, f0_hz, c, am_fft_v, sr_hz, N)
+%
+% functionality: estimate the frequency and the amplitude of the harmonic peaks of the signal
+%
+% INPUTS:
+% =======
+% - H          : number of harmonic peaks to estimate
+% - f0_hz      : fundamental frequency [Hz]
+% - c          : inharmonicity tolerance ]0,0.5[ : 0=purely harmonic
+% - am_fft_v   : vector of FFT amplitudes
+% - sr_hz      : sampling rate of the sound signal [hz]
+% - N          : size of the FFT
+%
+% OUTPUTS:
+% ========
+% - freqh_v : vector containing harmonic frequencies [Hz]
+% - amplh_v : vector containing harmonic amplitudes  [lin]
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [freqh_hz_v, amplh_lin_v] = Fharmopic(H, f0_hz, c, am_fft_v, sr_hz, N);
+
+
+=====================================================
+% function [SE_lin_v] = Fspecenv(amplh_lin_v)
+%
+% functionality: spectral envelope estimation
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [SE_lin_v] = Fspecenv(amplh_lin_v)
+
+
+=====================================================
+% function [X_m] = Fspectre(data_v, sr_hz, L_sec, overlap_factor, windowTYPE)
+%
+% compute Short-Time-Fourier-Transform over time
+% 
+% INPUTS:
+% =======
+% - data_v     : input vector
+% - sr_hz      : sampling rate of sound file
+% - L_sec      : length in [seconds] of sound file
+% - overlap_factor: overlap factor 
+% - windowTYPE : 'boxcar', 'hanning', 'hamming', 'blackman'
+%
+% OUTPUTS:
+% =======
+% - X_m(nb_frames, 1+N/2): matrix of FFT, first row is time in [second]
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [X_m] = Fspectre(data_v, sr_hz, L_sec, overlap_factor, windowTYPE)
+
+
+=====================================================
+% function [distance] = FDISTharmo(vector1_v, vector2_v)
+%
+% INPUTS
+% - vector1_v  : vector of parameters för the first sound
+% - vector2_v  : vector of parameters för the second sound
+% OUTPUTS:
+% - distance
+%
+% (Gfp 2001/05/23)
+%
+function [distance] = FDISTharmo(vector1_v, vector2_v)
+
+
+=====================================================
+% function [distance] = Fdistmultipercu(vector1_v, vector2_v);
+%
+% INPUTS
+% - vector1_v  : vector of parameters för the first sound
+% - vector2_v  : vector of parameters för the second sound
+% OUTPUTS:
+% - distance
+%
+% (Gfp 2001/05/23)
+%
+function [distance] = Fdistmultipercu(vector1_v, vector2_v);
+% vector1_v : lat, tc, sc
+% vector2_v : lat, tc, sc
+
+
+=====================================================
+function covarianceValues = Covariance_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Covariance_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of covariance matrices of groups of vector samples. 
+%% This is a three-dimensional matrix. Number of rows must equal elementNum, number of columns 
+%% and number of pages must both equal 'dim' in FloatMatrixType, or 0 if Raw is present.  
+%% If Covariance is present, Mean must also be present. 
+%%
+%%
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% CovarianceValue = 1/N(\sum_{i=1+(k-1)*N}^{kN} (x_i - \bar{x}_1)^2 (x_j - \bar{x}_j)^2
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function firstValues = First_SeriesOfScalar(auData, scalingRatio, elementNum, write_flag)
+%%% File: First_SeriesOfScalar.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of First 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% FirstValue = \first_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% ignore when Weight present,  
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function firstValues = First_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, write_flag)
+%%% File: First_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of first 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% FirstValue = \first_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% ignore when Weight present,  
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function lastValues = Last_SeriesOfScalar(auData, scalingRatio, elementNum, write_flag)
+%%% File: Last_SeriesOfScalar.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of Last 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% LastValue = \Last_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% ignore when Weight present,  
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function lastValues = Last_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, write_flag)
+%%% File: Last_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of last 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% lastValue = \last_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% ignore when Weight present,  
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function varianceValues = Variance_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Variance_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is series of varianceima of groups of samples. 
+%% Number of rows must equal elementNum, number of columns must equal 'dim' 
+%% in FloatMatrixType, or 0 if Raw is present.
+%%
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% varianceValue = 1/N(\sum_{i=1+(k-1)*N}^{kN} (x_i - \bar{x}_1)^2
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function maxValues = Max_SeriesOfScalar(auData, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: max_SeriesOfScalar.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of maxima 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% maxValue = max_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function maxValues = Max_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Max_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is series of maxima of groups of samples. 
+%% Number of rows must equal elementNum, number of columns must equal 'dim' 
+%% in FloatMatrixType, or 0 if Raw is present.
+%%
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% maxValue = \max_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function meanValues = Mean_SeriesOfScalar(auData, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Mean_SeriesOfScalar.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of Mean 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% MeanValue = \mean_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function meanValues = Mean_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Mean_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is series of meanima of groups of samples. 
+%% Number of rows must equal elementNum, number of columns must equal 'dim' 
+%% in FloatMatrixType, or 0 if Raw is present.
+%%
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% meanValue = \mean_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function minValues = Min_SeriesOfScalar(auData, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Min_SeriesOfScalar.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of minima 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% MinValue = \sum_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function minValues = Min_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Min_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is series of minima of groups of samples. 
+%% Number of rows must equal elementNum, number of columns must equal 'dim' 
+%% in FloatMatrixType, or 0 if Raw is present.
+%%
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% MinValue = \sum_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function randomValues = Random_SeriesOfScalar(auData, scalingRatio, elementNum, randomPlace, write_flag)
+%%% File: Random_SeriesOfScalar.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of Random 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% RandomValue = \random_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% ignore when Weight present,  
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function randomValues = Random_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, randomPlace, write_flag)
+%%% File: Random_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of Random 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% RandomValue = \random_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% ignore when Weight present,  
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function Raw = Raw_SeriesOfScalar(auData,totalSampleNum)
+%%% File: Raw_SeriesOfScalar.m
+%%
+%% -----------------------------
+%%
+%% The function of this subroutine is to series of unscaled samples 
+%% (full resolution). Use only if Scaling is absent to indicate the 
+%% entire series. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+%%if nargin < 5, error('constr requires five input arguments'); end
+%%if nargin < 6, weight_flag = 0; weight= []; end
+
+
+=====================================================
+function Raw = Raw_SeriesOfVector(auData,totalSampleNum)
+%%% File: Raw_SeriesOfVector.m
+%%
+%% -----------------------------
+%%
+%% The function of this subroutine is to series of unscaled samples 
+%% (full resolution). Use only if Scaling is absent to indicate the 
+%% entire series. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+%%if nargin < 5, error('constr requires five input arguments'); end
+%%if nargin < 6, weight_flag = 0; weight= []; end
+
+
+=====================================================
+function rootFirstValues = rootFirst_SeriesOfScalarBinary(auData,scalingRatio, elementNum)
+%%  File: rootFirst_SeriesOfScalarBinary.m
+%%
+%%  The function of this subroutine is to rearrange the coefficients which represent
+%%  the original series in in a "coarse-first, fine-last" fashion. 
+%%
+%%  Root first format is defined only for SeriesOfScalarBinaryType (uniform sampling 
+%%  with power-of-two ratio).  
+%%  Based on the previous binary mean tree, the coefficients of yk the root first 
+%%  series are calculated as:
+%%     y_1 = \bar{x}_1^m;
+%%     y_2 = \bar(x}_1^{m-1} - \bar{x}_2^{m-1};
+%%     y_3 = \bar{x}_1^{m-2} - \bar{x}_2^{m-2}; y_4 = \bar{x}_3^{m-2} - \bar{x}_4^{m-2}
+%%     ...
+%%  The binary mean tree (and therefore the original series) can be reconstructed from 
+%%  this series:
+%%     \bar{x}_1^m = y_1;
+%%     \bar(x}_1^{m-1} = \bar{x}_1^m + y_2/2; \bar{x}_2^{m-1} = \bar{x}_1^m - y_2/2;
+%%     ...
+%%  The first coefficient y_1  is the grand mean. The second y_2  is the difference 
+%%  between the means of the first and second half of the series, from which these 
+%%  two means can be calculated, etc. rootFirst format may be useful to transmit a 
+%%  description over a slow network, for example to display a progressively-refined 
+%%  image of the descriptor. 
+%%  Root First format is defined only for the 'mean' field. If 'rootFirst' is true, 
+%%  only the 'mean' field is allowed.
+%% 
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 August 2000 (N3489)
+%% Last modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function [varianceScalewiseValues, rootFirstValues] = scalarwiseVariance_SeriesOfScalarBinary(auData,scalingRatio, elementNum)
+%%  File: scalarwiseVariance_SeriesOfScalarBinary.m
+%%
+%%  The function of this subroutine is to rearrange the coefficients which represent
+%%  the original series in in a "coarse-first, fine-last" fashion. 
+%%
+%%  Root first format is defined only for SeriesOfScalarBinaryType (uniform sampling 
+%%  with power-of-two ratio).  
+%%  Based on the previous binary mean tree, the coefficients of yk the root first 
+%%  series are calculated as:
+%%     y_1 = \bar{x}_1^m;
+%%     y_2 = \bar(x}_1^{m-1} - \bar{x}_2^{m-1};
+%%     y_3 = \bar{x}_1^{m-2} - \bar{x}_2^{m-2}; y_4 = \bar{x}_3^{m-2} - \bar{x}_4^{m-2}
+%%     ...
+%%  The binary mean tree (and therefore the original series) can be reconstructed from 
+%%  this series:
+%%     \bar{x}_1^m = y_1;
+%%     \bar(x}_1^{m-1} = \bar{x}_1^m + y_2/2; \bar{x}_2^{m-1} = \bar{x}_1^m - y_2/2;
+%%     ...
+%%  The first coefficient y_1  is the grand mean. The second y_2  is the difference 
+%%  between the means of the first and second half of the series, from which these 
+%%  two means can be calculated, etc. rootFirst format may be useful to transmit a 
+%%  description over a slow network, for example to display a progressively-refined 
+%%  image of the descriptor. 
+%%  Root First format is defined only for the 'mean' field. If 'rootFirst' is true, 
+%%  only the 'mean' field is allowed.
+
+
+=====================================================
+function [minValues, scaledData] = ScalingSeries(auData, scaledRatio, rescaledFactor, elementNum, weight_flag, weight)
+%%% File: Min_SeriesOfScalar.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is scalable series. 
+%% Suppose the original series is scaled by a scale ratio of P, 
+%% and this scaled series is then rescaled by a factor of Q. 
+%% The result is the same as if the original series had been 
+%% scaled by a scale ratio of N=PQ.
+%% 
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function SeriesOfScalarBegin(totalSampleNum)
+%%% File: SeriesOfScalarBegin.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is to write series of scalar
+%% such like raw, min,max,mean,variance,random,first,last into
+%% XML file. 
+%% 
+%% <!-- ##################################################################### -->
+%% <!-- Definition of abstract SeriesOfScalarType                             -->
+%%  <!-- ##################################################################### -->
+%%  <complexType name="SeriesOfScalarType" base="mpeg7:ScalableSeriesType"
+%%               derivedBy="extension">
+%%    <element name="Raw" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="Min" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="Max" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="Mean" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="Random" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="First" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="Last" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="Variance" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="Weight" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%  </complexType>
+%%
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+%if nargin < 5, error('constr requires five input arguments'); end
+%if nargin < 6, weight_flag = 0; weight= []; end
+
+
+=====================================================
+function [varianceScalewiseValues, rootFirstValues] = SeriesOfScalarBinary(auData, scalingRatio,elementNum)
+%%% File: SeriesOfScalarBinary.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is to write series of scalar
+%% with a uniform power-of-two ScaleRatio in a XML file.
+%% The restriction to a power-of-two ratio eases the comparison 
+%% of series with different ScaleRatios. It also allows an additional 
+%% scaling operation to be defined (scalewise variance), and allows 
+%% the data to be coded in "rootFirst" format
+%%
+%% <!-- ##################################################################### -->
+%% <!-- Definition of abstract SeriesOfScalarBinaryType                       -->
+%% <!-- ##################################################################### -->
+%% <complexType name="SeriesOfScalarBinaryType" base="mpeg7:SeriesOfScalarType"
+%%               derivedBy="extension">
+%%    <element name="VarianceScalewise" type="mpeg7:FloatMatrixType"
+%%             minOccurs="0"/>
+%%    <attribute name="rootFirst" type="boolean" use="default" value="false"/>
+%% </complexType>
+%%
+%% Function:
+%% SeriesOfScalarBinary: A representation of a series of scalar values scaled by 
+%%                       a power of two factor.
+%% Outputs:
+%% VarianceScalewise:    Optional array of arrays of scalewise variance coefficients. 
+%%								 Scalewise variance is a decomposition of the variance into 
+%%                       a series of coefficients, each of which describes the variability 
+%%                       at a particular scale. There are log2(ratio) such coefficients. 
+%%                       Number of rows must equal 'NumElements', number of columns must 
+%%                       equal the number of coefficients of the scalewise variance.
+%% rootFirst:            Optional flag. If true, the series are recorded in "root-first" format. 
+%%								 This format is defined below. In brief: the recorded series starts 
+%%                       with the grand mean of the original series, and the subsequent values 
+%%                       provide a progressively refined description from which the entire series 
+%%                       can be reconstructed.
+%% Inputs:
+%% auData:               Incoming signal
+%% scaligRatio:          Scale factor
+%% elementNum:           Elements Number
+%%
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+%if nargin < 5, error('constr requires five input arguments'); end
+%if nargin < 6, weight_flag = 0; weight= []; end
+%global fid;
+
+
+=====================================================
+function SeriesOfScalarEnd()
+%%% File: SeriesOfScalarEnd.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is to close XML file 
+%% for SeriesOfScalar
+%% 
+%% 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function SeriesOfVectorBegin(totalSampleNum, vectorSize)
+%%% File: SeriesOfScalarBegin.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is to write series of vector
+%% such like raw, min,max,mean,variance,random,first,last into
+%% XML file. 
+%% 
+%% <!-- ##################################################################### -->
+%% <!-- Definition of SeriesOfVectorType                                      -->
+%% <!-- ##################################################################### -->
+%% <complexType name="SeriesOfVectorType" base="mpeg7:ScalableSeriesType"
+%%               derivedBy="extension">
+%%    <element name="Raw" type="mpeg7:FloatMatrixType" minOccurs="0"/>
+%%    <element name="Min" type="mpeg7:FloatMatrixType" minOccurs="0"/>
+%%    <element name="Max" type="mpeg7:FloatMatrixType" minOccurs="0"/>
+%%    <element name="Mean" type="mpeg7:FloatMatrixType" minOccurs="0"/>
+%%    <element name="Random" type="mpeg7:FloatMatrixType" minOccurs="0"/>
+%%    <element name="First" type="mpeg7:FloatMatrixType" minOccurs="0"/>
+%%    <element name="Last" type="mpeg7:FloatMatrixType" minOccurs="0"/>
+%%    <element name="Variance" type="mpeg7:FloatMatrixType" minOccurs="0"/>
+%%    <element name="Covariance" type="mpeg7:FloatMatrixType" minOccurs="0"/>
+%%    <element name="VarianceSummed" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="MaxSqDist" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <element name="Weight" type="mpeg7:FloatVectorType" minOccurs="0"/>
+%%    <attribute name="vectorSize" type="positiveInteger" use="default"
+%%               value="1"/>
+%%  </complexType>
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+%if nargin < 5, error('constr requires five input arguments'); end
+%if nargin < 6, weight_flag = 0; weight= []; end
+
+
+=====================================================
+function SeriesOfVectorEnd()
+%%% File: SeriesOfVectorEnd.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is to close XML file 
+%% for SeriesOfVector
+%% 
+%% 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function varianceScalewiseValues = SWVariance_SeriesOfScalarBinary(auData,scalingRatio,elementNum)
+%%  File: scalarwiseVariance_SeriesOfScalarBinary.m
+%%
+%%  The function of this subroutine is to decompose the variance into a vector of coefficients that 
+%%  describe variability at different scales. The sum of these coefficients equals the variance. 
+%%
+%%  To calculate the scalewise variance of a set of N=2^m samples, first recursively form a binary 
+%%  tree of means:
+%%     \bar{x}_k^1 = (x_{2k-1} + x_{2k})/2, k = 1, \cdots, N/2;
+%%     \bar{x}_k^2 = (\bar(x}_{2k-1}^1 + \bar{x}_2K^1)/2, k=1,\cdots, N/4;
+%%     \bar{x}_k^m = (\bar{x}_{2k-1}^{m-1} + \bar{x}_{2k}^{m-1})/2; 
+%%     ...
+%%   Then calculate the coefficients:
+%%    z^1 = (2/N) \sum_{k=1}^{N/2}(x_{2k-1}- x _{2k})^2/2
+%%    z^2 = (4/N) \sum_{k=1}^{N/2}(x_{2k-1}^1- x_{2k}^1)^2/2
+%%    z^m =  (x_{2k-1}^1- x_{2k}^1)^2/2
+%% 
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 August 2000 (N3489)
+%% Last modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+%% File Name: Test_ADs.m
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 August 2000 (N3489)
+%% Last modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+%%------------------SeriesOfVectorType-------------------------------------------------
+%% This descriptor represents a series of vectors
+%%
+
+
+=====================================================
+function varianceSummedValues = Variancesummed_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Variancesummed_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is series of summed variance coefficients of 
+%% groups of samples. Size of array must equal elementNum, or 0 if Raw is present. 
+%% If VarianceSummed is present, Mean must also be present.
+%%
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% varianceValue = (1/N)\sum_{j=1}^{D} \sum_{i=1+(k-1)*N}^{kN} (x_i^j - \bar{x}_1^j)^2
+%% x -> audata
+%% If Weight present, 
+%% varianceValue = \sum_{j=1}^{D} \sum_{i=1+(k-1)*N}^{kN} w_i^j (x_i^j - \bar{x}_1^j)^2/ (\sum_{j=1}^D
+%% \sum_{i = 1+(k-1)N}w_i^j
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function varianceValues = Variance_SeriesOfScalar(auData, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Variance_SeriesOfScalar.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of Variance 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% VarianceValue = \variance_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function varianceValues = Variance_SeriesOfVector(auData, totalSampleNum, scalingRatio, elementNum, weight_flag, weight, write_flag)
+%%% File: Variance_SeriesOfVector.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is series of varianceima of groups of samples. 
+%% Number of rows must equal elementNum, number of columns must equal 'dim' 
+%% in FloatMatrixType, or 0 if Raw is present.
+%%
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% varianceValue = 1/N(\sum_{i=1+(k-1)*N}^{kN} (x_i - \bar{x}_1)^2
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function weightValues = Weight_SeriesOfScalar(scalingRatio, elementNum, weight, write_flag)
+%%% File: Weight_SeriesOfScalar.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is Series of Weight 
+%% of groups of samples. Size of the vector should equal 
+%% elementNum, or 0 if Raw is present.
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% WeightValue = \sum_{i=1+(k-1)*N}^{kN} x_i
+%% x -> audata
+%% If Weight present, ignore samples with zero weight. 
+%% If all have zero weight, set to zero by convention. 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function [xmlfile] = getxmlfilename(audiosignal)
+
+
+=====================================================
+function fileName=ASCtoXML(ASCValues,hopSize,fileName)
+% This function generates the XML file containing the description of the AudioSpectrumCentroid
+% It returns the name of the genrated XML file
+% ASCValues is a vector of size N with
+% N=number of audio frames
+% Written by Thibaut Sacreste
+% Based on ISO/IEC WD 15938-4
+%
+% Version 1.0 
+% created 16/03/2002
+
+
+=====================================================
+function edge = ASEbounds(fs,hopsize,res,samples)
+% function edge = minloedge(fs,hopsize,res)
+%
+% This function uses the sampling frequency, fs, the hopsize (in ms) and the 
+% resolution in octaves to determine the minimum loedge for the application
+% with samples being a flag set to zero.
+%
+% if the FFT size has already been determined then hopsize may be set to the
+% FFT size and the samples flag set to 1.
+%
+% Written by Melanie Jackson
+% 28th September 2001.
+
+
+=====================================================
+function fileName=ASEtoXML(ASEValues,loEdge,hiEdge,octaveResolution,hopSize,fileName)
+% This function generates the XML file containing the description of the AudioSpectrumEnvelope
+% It returns the name of the genrated XML file
+% ASEValues is a MxN matrix with
+% M=number of audio frames
+% N=number of frequency bands
+% Written by Thibaut Sacreste
+% Based on ISO/IEC WD 15938-4
+%
+% Version 1.0 
+% created 15/03/2002
+
+
+=====================================================
+function fileName=ASFtoXML(ASFValues,loEdge,hiEdge,hopSize,fileName)
+% This function generates the XML file containing the description of the AudioSpectrumFlatness
+% It returns the name of the genrated XML file
+% ASFValues is a MxN matrix with
+% M=number of audio frames
+% N=number of frequency bands
+% Written by Thibaut Sacreste
+% Based on ISO/IEC WD 15938-4
+%
+% Version 1.0 
+% created 16/03/2002
+
+
+=====================================================
+function fileName=ASStoXML(ASSValues,hopSize,fileName)
+% This function generates the XML file containing the description of the AudioSpectrumSpread
+% It returns the name of the genrated XML file
+% ASSValues is a vector of size N with
+% N=number of audio frames
+% Written by Thibaut Sacreste
+% Based on ISO/IEC WD 15938-4
+%
+% Version 1.0 
+% created 16/03/2002
+
+
+=====================================================
+function fileName=AudioSignatureToXML(as_mean,as_var,loEdge,hiEdge,hopSize,scaleRatio,fileName)
+% This function generates the XML file containing the description of the AudioSignature Type
+% It returns the name of the genrated XML file
+% AudioSignature values is a MxN matrix with
+% M=number of Signature vectors
+% N=number of frequency bands
+% Written by THorsten Kastner
+% Based on ISO/IEC WD 15938-4
+%
+% Version 1.0 
+% created 3/05/2002
+
+
+=====================================================
+function fileName=AudioSpectrumBasisToXML(V,vargs)
+% AudioSpectrumBasisToXML(AudioSpectrumBasisD, filename, [Optional Args]); 
+%    - generates an XML file for AudioSpectrumBasisD
+%
+% AudioSignature values is a MxN matrix with
+% M=number of Signature vectors
+% N=number of frequency bands
+%
+% The following variables are optional, and are specified using
+% ['parameter', value pairs] on the command line.
+%   
+%    'JADE'                0            - flag to indicate use of ICA
+%    'hopSize'            'PT10N1000F'  - AudioSpectrumEnvelopeD hopSize
+%    'loEdge'              62.5,        - AudioSpectrumEnvelopeD low Hz
+%    'hiEdge'              16000,       - AudioSpectrumEnvelopeD high Hz
+%    'octaveResolution'    '1/8'        - AudioSpectrumEnvelopeD resolution
+%    'outputFile'           ''          - Filename for Model output [stem+mp7.xml]
+% Author: Michael A. Casey
+% Language: Matlab
+% Based on ISO/IEC FDIS 15938-4
+%
+% Version 2.0 
+% created 12/08/2003
+
+
+=====================================================
+function fileName=AudioProjectionBasisToXML(P,vargs)
+% AudioSpectrumProjectionToXML(AudioSpectrumProjectionD,[Optional Args]); 
+%    - generates an XML file for AudioSpectrumProjectionD
+%
+% AudioSpectrumProjectionD values is a t x (1 + k) matrix with
+% t=number of time points
+% k=number of basis functions used for the projection (+1 for L2-norm env)
+%
+% The following variables are optional, and are specified using
+% ['parameter', value pairs] on the command line.
+%   
+%    'hopSize'            'PT10N1000F'  - AudioSpectrumEnvelopeD hopSize
+%    'loEdge'              62.5,        - AudioSpectrumEnvelopeD low Hz
+%    'hiEdge'              16000,       - AudioSpectrumEnvelopeD high Hz
+%    'octaveResolution'    '1/8'        - AudioSpectrumEnvelopeD resolution
+%    'outputFile'           ''          - Filename for Model output [stem+mp7.xml]
+% Author: Michael A. Casey
+% Language: Matlab
+% Based on ISO/IEC FDIS 15938-4
+%
+% Version 2.0 
+% created 12/08/2003
+
+
+=====================================================
+function fileName=...
+
+
+=====================================================
+function fileName=...
+
+
+=====================================================
+function fileName=h_MTPtoXML(inFileName,fileName)
+% This function generates the XML file containing the description for Media
+% Time Point Annotations
+% It returns the name of the genrated XML file
+% MTPText
+
+
+=====================================================
+function fileName=...
+
+
+=====================================================
+function fileName=SMSHtoXML(Hist,Ref,fileName)
+% This function generates the XML file containing the description of the
+% SoundModelStateHistogram
+% It returns the name of the genrated XML file
+% Values is a N vector with
+% N=number of state path samples
+
+
+=====================================================
+function fileName=SMSPtoXML(Path,hopSize,fileName)
+% This function generates the XML file containing the description of the
+% SoundModelStatePath
+% It returns the name of the genrated XML file
+% Values is a N vector with
+% N=number of state path samples
+
+
+=====================================================
+function fileName=SoundModelStatePathToXML(P,outputFile,modelName)
+% SoundModelStatePathToXML(SoundModelStatePathD,outputFile,soundModelID); 
+%    - generates an XML file for SoundModelStatePathD
+%
+% SoundModelStatePathD values is a 1 x t matrix, t=number of time points
+% outputFile - filename for XML output
+% soundModelName - reference to model that generated this SoundModelStatePathD instance 
+% Author: Michael A. Casey
+% Language: Matlab
+% Based on ISO/IEC FDIS 15938-4
+%
+% Version 2.0 
+% created 12/08/2003
+
+
+=====================================================
+% function [HarmonicSpectralCentoid, HarmonicSpectralDeviation, HarmonicSpectralSpread, HarmonicSpectralVariation, LogAttackTime, SpectralCentroid, TemporalCentroid] = ...
+%				mp7DSInstrumentTimbre(FILENAME, writeXML, XMLFile);
+%
+% INPUTS:
+% =======
+% - FILENAME [ascii string]: name of the file to be processed
+% - writeXML 					: a flag for the generation of the XML file
+% 										writeXML=0 -> no generation
+% 										writeXML=1 -> generation
+% - XMLFile 					: name of the XML file to be generated (optional)
+%
+% OUTPUTS:
+% ========
+% - HarmonicSpectralCentoid, 
+% - HarmonicSpectralDeviation, 
+% - HarmonicSpectralSpread, 
+% - HarmonicSpectralVariation, 
+% - LogAttackTime
+% - SpectralCentroid
+% - TemporalCentroid
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2002/10/30
+%
+function[HarmonicSpectralCentoid, HarmonicSpectralDeviation, HarmonicSpectralSpread, HarmonicSpectralVariation, LogAttackTime, SpectralCentroid, TemporalCentroid] = ...
+
+
+=====================================================
+% function [LogAttackTime] = mp7DLogAttackTime(envelop_bp, threshold_percent)
+%
+% estimate the attack start and end time of a signal envelop
+% and 
+% compute the log-attack-time
+%
+% INPUTS
+% ======
+% - envelop_bp        : energy envelope (first column: time [second] | second column: value)
+% - threshold_percent : percentage of maximum signal energy applied in order to determine start time
+% 
+% OUTPUTS
+% =======
+% - LogAttackTime               : log-attack-time
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [LogAttackTime] = mp7DLogAttackTime(envelop_bp, threshold_percent)
+
+
+=====================================================
+
+
+=====================================================
+
+
+=====================================================
+
+
+=====================================================
+
+
+=====================================================
+
+
+=====================================================
+function [AudioSpectrumCentroid, XMLFile] =AudioSpectrumCentroidType(audioFile,hopSize,writeXML,XMLFile)
+% This function describes the centre of gravity of log-frequency power spectrum
+% audiosignal is Audio data
+% Written by Melanie Jackson
+% Version 1.0 12 Jan 2001
+% Modified 16 March 2001 - Removed spectrum extraction to generic function
+% Modified 16/04/2002 by Thibaut Sacreste - add XML generation
+% Modified 19/04/2002 by Thibaut Sacreste - changed to be a stand alone function
+% Modified 03/05/2003 by Holger Crysandt - power spectrum bug-fix, see w5048 for details
+%--------------------------------------------------------------------
+% audioFile is the name of the audio file to process
+% 2 types of files can be read: .wav and .au 
+% writeXML is a flag for the generation of the XML file
+% writeXML=0 -> no generation
+% writeXML=1 -> generation
+% XMLFile is the name of the XML file to be generated (optional)
+%--------------------------------------------------------------------
+% Initialisation:
+
+
+=====================================================
+function [AudioSpectrumEnvelope, attributegrp, map, XMLFile] = AudioSpectrumEnvelopeD(audioFile,hopSize,attributegrp,writeXML,XMLFile,map)
+%[AudioSpectrumEnvelope, attributegrp, map, XMLFile] = AudioSpectrumEnvelopeType(audioFile,hopSize,attributegrp,writeXML,XMLFile,map)
+% This function determines an AudioSpectrumEnvelope
+% and also returns the map from linear to log bands.
+%
+%
+% Written by Melanie Jackson
+% Based on ISO/IEC WD 15938-4
+%
+% Version 2.0 15/12/2000
+% Modified 18/12/2000 - Debugging
+% Modified 9/1/2001 - Complete function description
+% Modified 16th March 2001 - Removed common sepectrum analysis to generic function
+% Modified 15/04/2002 by Thibaut Sacreste - add XML generation
+% Modified 18/04/2002 by Thibaut Sacreste - changed to be a stand alone function
+% Modified 03/05/2003 by Holger Crysandt - power spectrum bug-fix, see w5048 for details
+%--------------------------------------------------------------------
+% audioFile is the name of the audio file to process
+% 2 types of files can be read: .wav and .au 
+% attributegrp is a structure containing
+% the attributes of the AudioSpectrumEnvelope
+% as defined in the audioSpectrumAttributeGrp:
+% loEdge, hiEdge, octaveResolution
+% writeXML is a flag for the generation of the XML file
+% writeXML=0 -> no generation
+% writeXML=1 -> generation
+% XMLFile is the name of the XML file to be generated (optional)
+%--------------------------------------------------------------------
+% Initialisation:
+
+
+=====================================================
+function [AudioSpectrumFlatness ,lo_edge, hi_edge, XMLFile ] = AudioSpectrumFlatnessType(audioFile,hopSize,loEdge,hiEdge,writeXML,XMLFile)
+% This function describes the spectral flatness measure of the audio signal
+% The frequency range is divided into numbands logarithmically spaced bands
+% of 1/4 octave width, starting at loEdge up to hiEdge
+% Written by Melanie Jackson & Juergen Herre
+% Version 2.0 25 July 2001
+% Modified by Melanie Jackson 10 December 2001
+% Modified by MJ 17 January 2002
+% Modified 16/04/2002 by Thibaut Sacreste - add XML generation
+% Modified 19/04/2002 by Thibaut Sacreste - changed to be a stand alone function
+% Modified 30/04/2002 by Thorsten Kastner - changed function call (loEdge and hiEdge can be set)
+%                                         - modified check for loEdge and hiEdge
+% Modified 12/06/2002 by Thorsten Kastner - adapted coefficient grouping to variable loEdge and hiEdge
+%                                         - values for loEdge and hiEdge will be recalculated if necessary
+%--------------------------------------------------------------------
+% audioFile is the name of the audio file to process
+% 2 types of files can be read: .wav and .au 
+% writeXML is a flag for the generation of the XML file
+% writeXML=0 -> no generation
+% writeXML=1 -> generation
+% XMLFile is the name of the XML file to be generated (optional)
+%--------------------------------------------------------------------
+% Initialisation:
+% Read in audio file
+
+
+=====================================================
+function [AudioSpectrumSpread, XMLFile] = AudioSpectrumSpreadType(audioFile,hopSize,writeXML,XMLFile)
+% This function describes the second moment of the log-frequency power spectrum
+% fftout is the magnitude of the windowed FFT
+% Written by Melanie Jackson
+% Version 1.0 12 Jan 2001
+% Modified 16 March 2001 - Removed spectrum extraction to generic function
+% Modified 16/04/2002 - add XML generation
+% Modified 19/04/2002 by Thibaut Sacreste - changed to be a stand alone function
+% Modified 03/05/2003 by Holger Crysandt - power spectrum bug-fix, see w5048 for details
+%--------------------------------------------------------------------
+% audioFile is the name of the audio file to process
+% 2 types of files can be read: .wav and .au 
+% writeXML is a flag for the generation of the XML file
+% writeXML=0 -> no generation
+% writeXML=1 -> generation
+% XMLFile is the name of the XML file to be generated (optional)
+%--------------------------------------------------------------------
+% Initialisation:
+
+
+=====================================================
+function [quot, remn, remd] = h_fraction(num,den)
+% This function returns three values, the quotient and the remainder numerator and denominator
+% where num and den are assumed to be integers
+%
+% num/den = quot+remn/remd  
+
+
+=====================================================
+% Modified 30/04/2002 by Thorsten Kastner - zero pad (length overlap) at start and end for overlap removed; 
+%                                           because: there's no overlap in ASF
+function  [fftout,phase] = mpeg7getspec(data,v)
+% data = data(1:5004);
+
+
+=====================================================
+function standvar = mpeg7init(fs,hopsize,windowsize,window,FFTsize)
+% This function creates a structure of the default values
+% to be used throughout the descriptors
+% Written by Melanie Jackson
+% Version 1 15th March 2001
+% Modified 30/04/2002 by Thorsten Kastner - changed standard hopsize to 30ms
+%                                         - set hopsize = windowsize (no overlap for ASF)
+
+
+=====================================================
+% function [LogAttackTime, SpectralCentroid, TemporalCentroid] = ...
+% 				mp7DSPercussiveInstrumentTimbre(FILENAME, writeXML, XMLFile);
+%
+% INPUTS:
+% =======
+% - FILENAME [ascii string]: name of the file to be processed
+% - writeXML 					: a flag for the generation of the XML file
+% 										writeXML=0 -> no generation
+% 										writeXML=1 -> generation
+% - XMLFile 					: name of the XML file to be generated (optional)
+%
+% OUTPUTS:
+% ========
+% - LogAttackTime, 
+% - SpectralCentroid, 
+% - TemporalCentroid
+%
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function[LogAttackTime, SpectralCentroid, TemporalCentroid] = mp7DSPercussiveInstrumentTimbre(FILENAME, writeXML, XMLFile);
+
+
+=====================================================
+function scaledData = ScalableSeries(auData, totalSampleNum, scaledRatio, rescaledFactor, elementNum, weight_flag,weight)
+%%% File: ScalableSeries.m
+%%
+%% --------------  ---------------
+%%
+%% The function of this subroutine is scalable series. 
+%% Suppose the original series is scaled by a scale ratio of P, 
+%% and this scaled series is then rescaled by a factor of Q. 
+%% The result is the same as if the original series had been 
+%% scaled by a scale ratio of N=PQ.
+%% 
+%% 
+%% Definition:
+%%
+%% N = P*Q (?)
+%% P -> scaleRatio, Q -> rescaleFactor 
+%% 
+%% (N3704)
+%%
+%%
+%% Copyright (c), IME, All Rights Reserved
+%%
+%% Author: Dong Yan Huang
+%% Version: 1.0  Time: 28 October 2000 (N3489)
+%% Last Modified: 27 Mar 2001 (N3704)
+
+
+=====================================================
+function Y = SoundClassificationModelDS(DIR, Nstates, Ncomps, varargin)
+% Y = SoundClassificationModelDS(dir, nS, nB [, OPTIONAL ARGS])
+%                                                                    
+% Train multiple SoundModelDS using Baum-Welch re-estimation.
+%
+%Inputs:
+%
+% DIR - root directory for training data (contains sub-directories of individual class data)
+% nS - number of initial model states for each HMM [10]
+% nB  - number of basis functions to extract [10]
+%
+% The following variables are optional, and are specified using
+% 'parameter' value pairs on the command line.
+%
+%    'hopSize'          'PT10N1000F'
+%    'loEdge'            62.5,      
+%    'hiEdge'            16000,     
+%    'octaveResolution'  '1/8'
+%    'outputFile'         'SoundClassificationModel'
+%    'sequenceHopSize'      '',
+%    'sequenceFrameLength'  ''
+%
+% Outputs:
+%
+% Y - cell array of SoundModelDS structures, one per sound class
+%
+% Copyright (C) 1999-2002 Michael A. Casey, All Rights Reserved.
+function sfxfiles = readsfxfiles(sfxfilename)
+function makeSoundDataLists(DIR, ALT_NAME)
+function crossValidateLists(soundDir, ALT_NAME)
+function textwrite(S,filename)
+function writeclassifierXML(Y, filename)
+function printErrorMsg
+
+
+=====================================================
+function Y = SoundModelDS(TrainingDataListFile, nS, nB, varargin)
+%SoundModelDS - Bayesean inference of HMM parameters from training data
+%
+% Y = SoundModelDS(TrainingDataListFile, nS, nB [,OPTIONAL ARGUMENTS...])
+%
+% INPUTS:
+% TrainingDataList - filename of training data list: WAV file names (one per line).
+%   nS - number of states in hidden Markov model [10]
+%   nB - number of basis components to extract [10]
+%
+% The following variables are optional, and are specified using
+% ['parameter', value pairs] on the command line.
+%
+%    'hopSize'            'PT10N1000F'  - AudioSpectrumEnvelopeD hopSize
+%    'loEdge'              62.5,        - AudioSpectrumEnvelopeD low Hz
+%    'hiEdge'              16000,       - AudioSpectrumEnvelopeD high Hz
+%    'octaveResolution'    '1/8'        - AudioSpectrumEnvelopeD resolution
+%    'sequenceHopSize'     '',          - HMM data window hop [whole file]
+%    'sequenceFrameLength' ''           - HMM data window length [whole file]
+%    'outputFile'           ''          - Filename for Model output [stem+mp7.xml]
+%    'soundName'            ''          - Model identifier name
+%
+% OUTPUTS: 
+%
+% outputFile.dat =  matlab struct Y.{T,S,M,C,X,maxEnv,V,p}
+%
+%     T - state transition matrix
+%     S - initial state probability vector
+%     M - stacked means matrix (1 vector per row)
+%     C - stacked inverse covariances
+%     V - AudioSpectrumBasis vectors
+% maxEnv- scaling parameter for model decoding
+%     p - training cycle likelihoods
+%
+% outputFile.mp7 = XML file containing MPEG-7 SoundModel description scheme
+%
+%
+% EXAMPLE:
+%
+% SoundModelDS TrainList.txt 0 10 10 myModel1 octaveResolution '1/8' hopSize PT10N1000F
+% 
+% Copyright (C) 1999-2002 Michael A. Casey, All Rights Reserved
+function [Mu,Cov,P,Pi,LL]=hmm(XX,T,K,cyc,tol)
+function indices=lengths_to_indices(lengths)
+function lens=indices_to_lengths(indices)
+function Z=rdiv(X,Y)
+function Z=rsum(X)
+function Z=rprod(X,Y)
+function sfxfiles = readsfxfiles(sfxfilename)
+function t = extractTime(timeTag)
+function writeSoundModelXML(filename, Y)
+function printErrorMsg
+
+
+=====================================================
+function H = SoundModelStateHistogramD(Path, Nstates, segSkip, segLen)
+%SoundModelStateHistogramD(Path, Nstates, [segSkip], [segLen])
+%
+% Extract normalized segmental state-path histograms
+%
+% Inputs:
+% Path - SondModelStatePathD output
+% Nstates - Number of states in SoundModel
+% [segSkip] - hop size in samples
+% [segLen]  - histogram length in samples
+% 
+% Outputs:
+% H - t x n matrix containing segmented state occupancy histograms
+%           t=time points, n=states
+
+
+=====================================================
+function [Path, loglike] = SoundModelStatePathD(filename, arg2, varargin)
+%[Path,loglike]=SoundModelStatePathD(soundfilename, arg2 [,OPTIONAL ARGS]) 
+%
+% Compute HMM State Path and log likelihood of sequence data
+%
+% Inputs:
+% soundfilename - filename of input sound (.wav or .au)
+% arg2 - SoundModelDS structure or filename of binary SoundModelDS instance (.mat)
+%
+% The following variables are optional, and are specified using
+% 'parameter' value pairs on the command line.
+%
+%    'hopSize'          'PT10N1000F'
+%    'loEdge'            62.5,      
+%    'hiEdge'            16000,     
+%    'octaveResolution'  '1/8'
+%    'sequenceHopSize'     '',
+%    'sequenceFrameLength' ''
+%    'outputFile'         ''
+%
+% Outputs
+%
+% Path - hidden Markov model optimal state path for sequence
+% loglike - log-likelihood of sequence
+%
+% Copyright (C) 2002 Michael A. Casey, All Rights Reserved
+function [ll,istar,delta,logP]=viterbi(Transitions,Starts,Means,iCovariances,Observations)
+function ret = hmm_logprob_obs_given_state(Observations, Means, iCovariances)
+function y=log_quiet(x)
+function logprobs = B3log(X,icovariance,mean)
+function distance=mahalonobis(x,icov,mean)
+function res=vadd(a,b)
+function M=tsum(v1,v2) % tensor sum of two vectors, v1->cols; v2->rows
+function t = extractTime(timeTag)
+function indices=lengths_to_indices(lengths)
+function lens=indices_to_lengths(indices)
+function writeStatePathXML(P,fname,hopSize)
+function printErrorMsg
+
+
+=====================================================
+% function [SpectralCentroid] = mp7SpectralCentroid(freq_v, ampl_v, H)
+%
+% compute instantaneous spectral centroid
+%
+% INPUTS:
+% =======
+% - freq_v : vector containing bins frequencies [Hz]
+% - ampl_v : vector containing bins amplitudes  [lin]
+% - H      : maximum number of bins taken into accounts
+%
+% OUTPUTS:
+% ========
+% - SpectralCentroid    : istantaneous harmonic spectral centroid
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [SpectralCentroid] = mp7SpectralCentroid(freq_v, ampl_v, H)
+
+
+=====================================================
+
+
+=====================================================
+% function [TemporalCentroid] = mp7TemporalCentroid(envelop_bp)
+%
+% estimate the temporal centroid of the energy envelop
+%
+% INPUTS
+% ======
+% - envelop_bp    	: energy envelope (first column: time [second] | second column: value)
+%
+% OUTPUTS
+% =======
+% - TemporalCentroid	: temporal centroid
+%
+% Target:   MP7-XM version
+% Author:   CUIDADO/IRCAM/ G. Peeters 
+% LastEdit: 2001/03/12
+%
+function [TemporalCentroid] = mp7TemporalCentroid(envelop_bp)
+
+

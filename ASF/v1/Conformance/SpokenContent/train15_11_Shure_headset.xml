@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Mpeg7 xmlns="urn:mpeg:mpeg7:schema:2001"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mpeg7="urn:mpeg:mpeg7:schema:2001"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xsi:schemaLocation="urn:mpeg:mpeg7:schema:2001 Mpeg7-2001.xsd">
+
+<DescriptionUnit xsi:type="SpokenContentLatticeType" id="latFirst">
+<Header xsi:type="SpokenContentHeaderType">
+<PhoneLexicon id="phonelexFirst" numOfOriginalEntries="45" phoneticAlphabet="sampa">
+	<Token>A:</Token>
+	<Token>{</Token>
+	<Token>V</Token>
+	<Token>O:</Token>
+	<Token>aU</Token>
+	<Token>@</Token>
+	<Token>aI</Token>
+	<Token>b</Token>
+	<Token>tS</Token>
+	<Token>d</Token>
+	<Token>D</Token>
+	<Token>e@</Token>
+	<Token>e</Token>
+	<Token>3:</Token>
+	<Token>eI</Token>
+	<Token>f</Token>
+	<Token>g</Token>
+	<Token>h</Token>
+	<Token>I@</Token>
+	<Token>I</Token>
+	<Token>i:</Token>
+	<Token>dZ</Token>
+	<Token>k</Token>
+	<Token>l</Token>
+	<Token>m</Token>
+	<Token>n</Token>
+	<Token>N</Token>
+	<Token>Q</Token>
+	<Token>@U</Token>
+	<Token>OI</Token>
+	<Token>p</Token>
+	<Token>r</Token>
+	<Token>s</Token>
+	<Token>S</Token>
+	<Token>...</Token>
+	<Token>t</Token>
+	<Token>T</Token>
+	<Token>U@</Token>
+	<Token>U</Token>
+	<Token>u:</Token>
+	<Token>v</Token>
+	<Token>w</Token>
+	<Token>j</Token>
+	<Token>z</Token>
+	<Token>Z</Token>
+</PhoneLexicon>
+<ConfusionInfo id="confinfoFirst" numOfDimensions="45">
+	<Insertion>57  82  51  53  57 155  68 293  42 184 389  86  102  97 121 124  77 240  80   80 108  35 135  42  99   59  85  66  34  44 137  32 116  111 543  147  163 116 81  66  168 73  112 79  17</Insertion>
+	<Deletion>77 388 370 127 54 2242 65 193 40 850 536 32 336 106 113 95 90 183 41 1609 103 56 323 767 256 1170 81 288 214 7 261 945 361 44 329 1643 19 31 95 201 230 265 176 190 1</Deletion>
+	<Substitution mpeg7:dim="45 45">
+		 368 16  40  10  20   9  13   4   0   3   6   1    3   4   3   3   3   1   3    1   1   0   2   0   1    0   1  75   1   7   1   2   0   0    5    2    4   5   1   2   3   3   0   3   0
+		 44  701 78   3  92  72  62  16   3   7   8   7   47  28   4   6   5  48  13   11   1   0   6   7  13    7   8  14   4   1   6   6  10   0    7    5   10   0  16   5  10   2   4   3   1
+		 56  45  510 24  55  28  28   8   3   1  12   5   34  57   3   6   3  19   7    7   1   5   4   8   6    3   4  116 14  25   3   0   3   0   17    1    4   3  16   3  11   6   2   8   1
+		  7   0   5  826  0  41   2   2   2   5   9   0    2   5   0   0   3   0   4    4   1   0   2  34   2    3   3  58   7  12   1   8   3   4   10    0    4  25  20   4   5  20   0   1   2
+		  8  30  11   0  202  1  16   1   0   0   1   0    7   6   1   0   2   0   1    2   1   0   3   2   0    0   1   6   3  26   3   0   0   0    1    0    0   2   3   1   3   0   0   1   0
+		 46  120 160 49  50 1754 32  64  22  52  75  67   220 282 43  37  32  61  143  235 42  34  47  93  81   52  40  63  80  50  36  58  69  20   58   34   76  109 164 71  86  61  23  61   8
+		  7  27  11   1   7   3  956  2   0   3   3   2   16   7  44   1   4   1   2    5   2   0   4   4   3    0   3   4  10  82   2   1   1   0    3    1    2   1   1   0   3   0   1   0   0
+		  5   6   4  10   1   1   1  903  1  37  27   0    2   1   1   0  37   1   2    1   2   1   3   2  20    9   4   9   4   1  104  4   1   0   14    2    4   1   2   3  13   6   0   2   0
+		  5   2   0   0   1   2   1   0  228  2   0   0    3   1   1   0   0   2   1    0   1  32   2   0   0    2   0   1   0   1   1   0   9  11    0   11    0   0   3   0   0   1   3   0   2
+		  7  11  16  18   5  28   4  87  16 1213 100  4   19  32  21  16  98   6  10   27  22  41  35  17  39   18  50  23  12   5  53   5  44   7   46   145  48   9  34  36  77   7  10  73   4
+		  7   3   8   3   4   7   2  68   1  35  724  1    8  11   2  27  11   3   6    2  10   0   8   8  45    9   6  10   4   4  39   3  13   0   26   10   102  4   7   4  71   4   2  18   2
+		  1   5   0   0   2   4   1   1   2   2   0  122  29  31   2   1   0   2   1    0   0   0   0   0   0    0   0   0   3   1   1   1   2   0    1    0    0   1   0   0   1   0   0   0   1
+		  8  94  44   2  84  36  22   7   1   3   3  115 1091 206 46  10   3  27  51   15   6   3   5   2   7    4   1   9  33   9   9  10   5   3   12    7    6   4  14   5   6   1   1   3   0
+		  6  28  22   1  20  19   8   5   0   2   6  21   26  248  9   2   0   1  55    7   3   3   3   8   1    1   0   0  20  10   3  17   2   1    3    3    5  16  23   7   3   0   0   1   0
+		  2   2   2   1   8   8  15   1   6   2   5  24   34   7 1033  1   4   5  31   43  71   5   4   0   2    1   8   3  29   8   1   1   3   2    6    1    3   9   6  31   2   2   9   2   1
+		  0   3   1   1   0   2   0   6   2   1  22   1    4   1   2 1325  2   1   0    1   5   2   3   1   0    1   5   1   1   1   8   2  11   5    9    8   116  1   0   5  23   0   0   0   5
+		  1   4   1   0   2   0   2  25   0  25   8   4    2   1   8   1  362  4   3    2  13   0  41   2   4    3   6   0   0   1   5   1   1   0    7    4    2   4   0   3   3   4   5   2   0
+		  6   2   3   0   1   2   1   5   0  10   7   1    5   4   2  11   3  559  3    6   3   0   7   2   5    1   0   2   1   3   4   1  11   5   11    5   10   2   0   1   2   4  13   5   4
+		  0   1   1   0   0   0   0   1   1   0   0  10    2   0   4   0   1   2  305  14  29   0   0   0   1    0   4   0   0   1   2   0   2   0    3    0    1  14   7  12   0   0  20   1   0
+		  8  22  11  12   9  413 29  38  26  47  82  44   258 116 253 20  37  58  260 1878 546 31  56  38  34   45  46  12  71  42  27  22  43   7   47   40   42  54  182 230 43  14  178 67  15
+		  0   1   0   2   3   5   0   2   4   5   6   4    0   1  31   2   3   2  25   56 1015  3   3   3   4    1   4   1   1   1   4   1   3   1    7    3    5   9   6  51   3   0  67   5   1
+		  0   0   1   0   1   0   3   1  44  12   0   1    2   0   5   1   2   0   3    0   3  313  0   3   1    0   8   0   2   1   0   1   6  17    2   23    1   9   2   2   2   1   5  11   9
+		  6  10  17   5   2   5   3  24  14  48  16   4    9   3   9   9  230 37   3    6  13  10 2053  3   3   13  15   5   3   1  55   4   3   5   50   44   20   3   6   6   5   6  20   8   1
+		 45  17  19  218 62  29  19  19   6  25  46   4   22  31  22  33  22  26  26    3  15  13  30 1276 51   34  20  126 34  37  22  14  14   5   28    7   16  45  27  11  29  49  30  12   2
+		  9   4  14   4   5   2   0  17   1   9  29   4    3   1   3   4   5   2   4    5   6   0   6  13 1655  159 64  18   5   0   6   6   0   1   15    1    3   1   5  11  10  36   3   5   0
+		 30  21  75  36  31  50  29  34  12  61  85  12   41  36  21  12  18  19  57   52  22   8  17  64  499 3183 658 53  22  18  21   8  20   8   42   15   20  17  37  46  54  58  30  21  10
+		  0   2   3   1   4   0   7   0   3   3   1   1    5   0   5   0   2   3   4    2  15   1   2   3  15   89  524  4   4   0   2   0   1   1    2    1    2   4   1   7   2   0   6   0   1
+		 83   9  71  99  25  25   7   7   2   3  12   0    5   3   0   3   8   2   2    4   2   0   0  23   4    5   2  719  3  15   1   4   5   0   10    3    4   7  17   6   4  16   0   2   0
+		  7   6  13  29  16  13  14  13   4   7   9  22   48  63  101  0   2   5  17   15   0   1   3  46  15    9   2  11  296  7   0   1   1   5   15    0    2  12  38  14   9  10   1   4   0
+		  3   0   1   1   0   0   8   0   0   0   0   0    0   0   0   0   0   0   0    0   1   0   0   0   0    1   0   3   0  237  0   0   1   0    1    0    0   1   0   0   0   0   1   0   0
+		  3   6  14   3   5   4   1  229  2  42  36   3    4   4   2   4  42  39   5    2   9   3  67   0   4    9   9  12   3   0 1297  2   3   0   29   24    7   1   4   5  13   3   5   7   1
+		 10  23  14   6  21  15  18  41  96  15  53  40   19  16  15  30  30  18  30    8  17  68  36   9  52   11  12  16  14  21  24 1382  9  31   40   13    9  50   7  13  45  48  11  14   5
+		  2   6   7   6   2  15   6   4  20   5  10   5   11  10   4  70   4   6   3    5   7  13   2   3   3    3   4   2   7   4   2   6 3600 22   16    9   153  3   7   5   6   1   3  406  5
+		  0   1   0   2   1   8   0   4  69   3   2   0    3   1   1   0   0   1   1    0   2   9   1   0   0    1   1   1   1   2   0   0  18  646   3    1    1   9   0   1   0   1   6   1  36
+		  4  19  20  12   2  13   2  37   1  27  27   4   11  11   6  13  47  38   6   14  28   1  99   2   9   12  16  13   0   2  64   4  16   1  4124  33    5   6  12   8   8  11   7  14   0
+		 17  27  53  22  10  74   8  64  109 347 212 11   88  48  27  61  92  54  30   47  19  70  152 13  36   16  61  27  14   9  111 14  211 15   100 2152  261 12  32  28  38  10  29  139  4
+		  2   1   1   1   0   2   0   0   0   3  16   0    0   0   0  72   1   0   0    0   1   0   8   1   2    0   1   2   1   0   6   0   6   0    2    8   298  1   2   0   3   0   0   9   1
+		  0   0   0   3   0   0   0   0   3   0   1   0    1   0   0   0   2   0   4    1   0   1   0   0   0    0   0   0   0   1   0   2   0   2    0    0    0  58   1   3   0   0   0   1   0
+		  0   0   1   3   0  13   0   0   3   1   2   1    6   3   1   0   6   0   4   15   2   7   1   2   0    0   1   0   3   2   3   1   1   0    0    4    0   7  65  12   1   2   1   1   0
+		  0   0   2   3   0  15   2   4   3   4   4   1    1   8   9   1   8   2  24   39  116  7   4   7   4    3  10   2   7   2   3   5   6   1   13    4    2  89  23  398  1   9   9   1   1
+		  6   7   6  17  12   9   0  17   2  25  27   5    9  18   7  128  1   2  15   10   4   6   4   8  11    3   6   7  11   5  15   4   5   0   13    3   69   7   7   7  980  2   1   8   2
+		  0   1   5  10   1   2   3  35   4   6  16   4    3   1   0  13   9  11   4    0   3   5   9  15  20    3   6   5   1  26   9  23   7   0    8    3    5  18   7   6  19  704  3   5   2
+		  2   0   2   1   1   3   8   3  19   4   4   2    0   0   4   4   0   3  11    7  31  53   2   3   5    2   2   1   0   6   1   0   1  10    4    6    5  19   1   1   3   3  464  6   3
+		  2   1   3   3   4   6   1   4   7   6  10   1    6   8   6  38   4   0   4   10   3  10   2   5   4    4   5   3   5   0   8   1  297 13   53   12   83   1   8   7  17   4   3 2083  8
+		  0   0   0   0   0   0   0   0   0   0   0   1    0   1   2   1   0   0   0    0   1   0   0   0   0    0   0   0   0   0   0   0   1   3    0    0    0   1   1   0   0   0   0   3  48
+	</Substitution>
+</ConfusionInfo>
+<DescriptionMetadata id="infoFirst">
+	<Instrument>
+		<Tool>
+			<Name>UTalk</Name>
+		</Tool>
+		<Setting name="acousticModel" value="mmf123h.org.utp"/>
+		<Setting name="grammarNetwork" value="loopback123h.utp"/>
+		<Setting name="insertionPenalty" value="-13"/>
+		<Setting name="lmScale" value="1"/>
+		<Setting name="defaultPrune" value="-1000"/>
+		<Setting name="scoreFloor" value="1e-05"/>
+	</Instrument>
+</DescriptionMetadata>
+<SpeakerInfo id="speakerFirst" phoneLexiconRef="#phonelexFirst" confusionInfoRef="#confinfoFirst" descriptionMetadataRef="#infoFirst" provenance="ASR">
+<SpokenLanguage>en-UK</SpokenLanguage>
+<Person>
+	<Name>
+		<GivenName initial="F">First</GivenName>
+		<GivenName initial="S">Speaker</GivenName>
+		<FamilyName>Surname</FamilyName>
+	</Name>
+</Person>
+</SpeakerInfo>
+</Header>
+<Block num="0" audio="noisySpeech" defaultSpeakerInfoRef="#speakerFirst">
+<MediaTime>
+	<MediaTimePoint>2001-09-19T05:50:00</MediaTimePoint>
+</MediaTime>
+<Node num="0" timeOffset="0">
+	<PhoneLink probability="1" phone="34"/>
+</Node>
+<Node num="1" timeOffset="5">
+	<PhoneLink probability="1" phone="34"/>
+</Node>
+<Node num="2" timeOffset="94">
+	<PhoneLink probability="1" phone="25"/>
+</Node>
+<Node num="3" timeOffset="105">
+	<PhoneLink probability="1" phone="6"/>
+</Node>
+<Node num="4" timeOffset="122">
+	<PhoneLink probability="1" phone="25"/>
+</Node>
+<Node num="5" timeOffset="137">
+	<PhoneLink probability="1" phone="43"/>
+</Node>
+<Node num="6" timeOffset="146">
+	<PhoneLink probability="1" phone="18"/>
+</Node>
+<Node num="7" timeOffset="161">
+	<PhoneLink probability="1" phone="31"/>
+	<PhoneLink nodeOffset="2" probability="1" phone="31"/>
+	<PhoneLink nodeOffset="3" probability="1" phone="31"/>
+	<PhoneLink nodeOffset="4" probability="1" phone="31"/>
+</Node>
+<Node num="8" timeOffset="173">
+	<PhoneLink nodeOffset="9" probability="1" phone="1"/>
+</Node>
+<Node num="9" timeOffset="174">
+	<PhoneLink nodeOffset="6" probability="1" phone="2"/>
+</Node>
+<Node num="10" timeOffset="174">
+	<PhoneLink nodeOffset="2" probability="1" phone="11"/>
+	<PhoneLink nodeOffset="3" probability="1" phone="5"/>
+</Node>
+<Node num="11" timeOffset="175">
+	<PhoneLink nodeOffset="3" probability="1" phone="13"/>
+	<PhoneLink nodeOffset="5" probability="1" phone="5"/>
+	<PhoneLink nodeOffset="8" probability="1" phone="5"/>
+	<PhoneLink nodeOffset="9" probability="0.00757568" phone="12"/>
+	<PhoneLink nodeOffset="9" probability="0.992218" phone="5"/>
+	<PhoneLink nodeOffset="10" probability="0.992218" phone="5"/>
+	<PhoneLink nodeOffset="10" probability="0.00757568" phone="12"/>
+</Node>
+<Node num="12" timeOffset="177">
+	<PhoneLink nodeOffset="6" probability="0.32087" phone="31"/>
+</Node>
+<Node num="13" timeOffset="177">
+	<PhoneLink nodeOffset="5" probability="0.679282" phone="31"/>
+</Node>
+<Node num="14" timeOffset="178">
+	<PhoneLink nodeOffset="4" probability="9.49919e-05" phone="31"/>
+</Node>
+<Node num="15" timeOffset="179">
+	<PhoneLink nodeOffset="7" probability="0.00017956" phone="25"/>
+</Node>
+<Node num="16" timeOffset="183">
+	<PhoneLink nodeOffset="6" probability="1.47392e-05" phone="25"/>
+</Node>
+<Node num="17" timeOffset="183">
+	<PhoneLink nodeOffset="5" probability="1" phone="25"/>
+</Node>
+<Node num="18" timeOffset="186">
+	<PhoneLink nodeOffset="5" probability="0.000928053" phone="34"/>
+</Node>
+<Node num="19" timeOffset="187">
+	<PhoneLink nodeOffset="4" probability="0.154256" phone="34"/>
+</Node>
+<Node num="20" timeOffset="187">
+	<PhoneLink nodeOffset="3" probability="0.4226" phone="34"/>
+</Node>
+<Node num="21" timeOffset="187">
+	<PhoneLink nodeOffset="2" probability="0.4226" phone="34"/>
+</Node>
+<Node num="22" timeOffset="188">
+	<PhoneLink probability="0.000262794" phone="34"/>
+</Node>
+<Node num="23" timeOffset="205">
+	<PhoneLink probability="1" phone="34"/>
+	<PhoneLink nodeOffset="2" probability="1" phone="34"/>
+</Node>
+<Node num="24" timeOffset="237">
+	<PhoneLink nodeOffset="2" probability="1" phone="34"/>
+</Node>
+<Node num="25" timeOffset="303">
+	<PhoneLink nodeOffset="2" probability="0.0745934" phone="34"/>
+</Node>
+<Node num="26" timeOffset="303">
+	<PhoneLink probability="0.0658285" phone="34"/>
+</Node>
+<Node num="27" timeOffset="442">
+</Node>
+</Block>
+</DescriptionUnit>
+</Mpeg7>

@@ -1,0 +1,5 @@
+[DEFAULT]
+BASEURL=file://C:\WINNT\web\ftp.htt
+[InternetShortcut]
+URL=ftp://merl.com/NEW/v2/Conformance/AudioBpmD/
+Modified=D097166264E2C201E8

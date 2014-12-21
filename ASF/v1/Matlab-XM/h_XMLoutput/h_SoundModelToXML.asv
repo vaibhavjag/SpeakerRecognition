@@ -1,0 +1,127 @@
+function h_SoundModelToXML(Y,filename)
+% h_SoundModelToXML(SoundModelDS, filename)
+%    - generates an XML file for SoundModelDS
+%
+% Author: Michael A. Casey
+% Language: Matlab
+% Based on ISO/IEC FDIS 15938-4
+%
+% Version 2.0 
+% created 12/08/2003
+
+Mpeg7_wrapper='Mpeg7_wrapper.xml';
+
+if ~isempty(vargs.outputFile)
+        fileName=vargs.outputFile;
+end       
+
+%--------------------------
+%determines the number of sample vectors 
+%and the number of frequency bands
+[vectorSize totalNumOfSamples ]=size(V);
+
+%--------------------------
+%creation of the xml file:
+try
+    xmlFile=fopen(vargs.outputFile,'w');  %opens the file in write mode
+catch
+    error(lasterr);
+end    
+
+%-------------------------
+%XML generation:
+
+%Mpeg7 wrapper:
+try
+    mpeg7File=fopen(Mpeg7_wrapper,'r');  %opens the file containing the Mpeg7 wrapper
+catch
+    error(lasterr);
+end    
+
+%copies the wrapper in the new XML file:
+while ~feof(mpeg7File)
+    line=fgets(mpeg7File);
+    fprintf(xmlFile,'%s',line);
+end    
+fclose(mpeg7File);
+
+%Descriptor generation:
+
+fid = fopen(filename, 'wt');
+if(fid<0) error('Could not open mp7 output file');end
+%	<Model xsi:type="SoundClassificationModelType">
+%			<SoundModel id="ID6" numOfStates="1">
+%				<Transitions mpeg7:dim="20 20">
+	
+fprintf(fid, '\t<Description xsi:type="ModelDescriptionType">\n');
+fprintf(fid, '\t\t<SoundModel id="%s" numOfStates="%d",Y.soundName,size(Y.T,1));
+fprintf(fid, '\t\t\t<Transitions mpeg7:dim="%d %d">\n', size(Y.T,1), size(Y.T,1));
+for k=1:size(Y.T,1)
+   fprintf(fid, '\t\t\t\t');
+   fprintf(fid, '%6.3f ', Y.T(k,:));
+   fprintf(fid, '\n');
+end
+fprintf(fid, '\t\t\t</Transitions>\n');
+%               <State>
+%					<Label>
+%						<Term termID="1.1"/>
+%					</Label>
+%				</State>
+%				<DescriptorModel>
+%					<Descriptor xsi:type="mpeg7:AudioSpectrumProjectionType">
+%						<SeriesOfVector totalNumOfSamples="200"/>
+%					</Descriptor>
+%					<Field>SeriesOfVector</Field>
+%				</DescriptorModel>
+
+for m=1:size(Y.S,2)
+   fprintf(fid, '\t\t\t<State>\n');
+   fprintf(fid, '\t\t\t\t<Label>\n\t\t\t\t\t<Term id="1.%d"/>\n\t\t\t\t</Label>\n',m);
+   fprintf(fid, '\t\t\t</State>\n');
+
+   fprintf(fid, '\t\t\t<DescriptorModel>\n');
+   fprintf(fid, '\t\t\t\t<Descriptor xsi:type="mpeg7:AudioSpectrumProjectionType"/>\n');
+   fprintf(fid, '\t\t\t\t\t<SeriesOfVector totalNumOfSamples="%d"/>',floor(median(Y.numFrames)));
+   fprintf(fid, '\t\t\t</Descriptor>\n');
+   fprintf(fid, '\t\t\t<Field>SeriesOfVector</Field>');
+   fprintf(fid, '\t\t\t</DescriptorModel>\n');
+
+%				<ObservationDistribution xsi:type="mpeg7:GaussianDistributionType">
+%					<Mean mpeg7:dim="1 21"> 1.245  7.299  0.942 -3.185 -0.486 -0.552 -0.101 -0.373 -0.127 -0.159 -0.120 -0.064 -0.010 -0.088 -0.063  0.007  0.068 -0.038 -0.013  0.007  0.030 </Mean>
+%					<CovarianceInverse mpeg7:dim="21 21">
+   fprintf(fid, '\t\t\t<ObservationDistribution xsi:type="mpeg7:GaussianDistributionType">\n');
+   fprintf(fid, '\t\t\t\t<Mean mpeg7:dim="1 %d">', size(Y.M,2));
+   fprintf(fid, '%6.3f ', Y.M(m,:) );
+   fprintf(fid, '</Mean>\n');
+   
+   fprintf(fid, '\t\t\t\t<CovarianceInverse mpeg7:dim="%d %d">\n', size(Y.C(:,:,m),1),size(Y.C(:,:,m),2));
+   C = Y.C(:,:,m);
+   for l=1:size(C,1)
+      fprintf(fid, '\t\t\t\t\t'); 
+      fprintf(fid, '%6.3f ', C(l,:)); % inv(K)
+      fprintf(fid, '\n');
+   end
+   fprintf(fid, '\t\t\t\t</CovarianceInverse>\n');
+   fprintf(fid, '\t\t\t</ObservationDistribution>\n');
+end
+%				<SoundClassLabel>
+%					<Term/>
+%				</SoundClassLabel>
+%				<SpectrumBasis loEdge="62.5" hiEdge="8000" octaveResolution="1/4">
+%					<SeriesOfVector hopSize="PT10N1000F" totalNumOfSamples="1" vectorSize="31">
+%						<Raw mpeg7:dim="31 20">
+fprintf(fid, '\t\t\t<
+fprintf(fid, '\t\t<SpectrumBasis loEdge="62.5" hiEdge="8000" octaveResolution="1/4">\n');
+fprintf(fid, ...
+   '\t\t\t<SeriesOfVector hopSize="PT10N1000F" totalNumOfSamples="1" vectorSize="%d %d">\n', ...
+   size(Y.V,1), size(Y.V,2));
+fprintf(fid, '\t\t\t\t<Raw mpeg7:dim="%d %d">\n', size(Y.V,1),size(Y.V,2));
+for l=1:size(Y.V,1)
+   fprintf(fid,'\t\t\t\t\t');
+   fprintf(fid,'%6.3f ', Y.V(l,:));
+   fprintf(fid,'\n');
+end
+fprintf(fid, '\t\t\t\t</Raw>\n');
+fprintf(fid, '\t\t\t</SeriesOfVector>\n');
+fprintf(fid, '\t\t</SpectrumBasis>\n');
+fprintf(fid, '</AudioDescriptionScheme>\n');

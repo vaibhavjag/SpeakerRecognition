@@ -1,0 +1,46 @@
+Technique	AudioSignalQualityType
+Document	ISO/IEC WD 15938-4
+Name		Joerg Bitzer, Stefan Kudras, Houpert Digital Audio, Germany
+EMail		j.bitzer@hda.de
+Type		high-level audio descriptor extraction tool
+
+External Libraries  	--
+
+Related Ds/DSs	BackgroundNoiseLevelD
+		BalanceD
+		BandwidthD
+		CrossChannelCorrelationD
+		DCOffsetD
+		RelativeDelayD
+
+Used Ds/DSs	BackgroundNoiseLevelD
+		BalanceD
+		BandwidthD
+		CrossChannelCorrelationD
+		DCOffsetD
+		RelativeDelayD
+
+Input		samples of a Wav file
+Extraction	Yes
+Client Appl	NA
+Summary		This component is the AudioSignalQuality descriptor extraction tool
+Strong Points 	--	
+Limitations	--
+Known Problems 	--	
+Parameters	auData : 2D matrix : audiostream, N channels in columns
+   		fs : number : sample frequency of the signal
+   		channels : vector : channels to analyze (if empty all channels are used)
+		GivenName : string : Name of Operator
+   		szXMLout (optional) : string : name of output XML-file. if not given no XML-output
+
+Output		--
+
+Usage		1. run matlab
+		2. change the working directory to the directory containing the function
+		3. call the function 'AudioSignalQualityDS' with the required parameters
+
+Function call example 
+
+>> AudioSignalQualityDS(data,44100,[1 2],'Operatorname','AudioSignalQuality.xml'); 
+
+

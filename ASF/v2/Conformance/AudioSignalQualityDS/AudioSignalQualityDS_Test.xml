@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- ##################################################################### 	                -->
+<!-- Definition of AudioSignalQuality DS                                         	        -->
+<!-- ##################################################################### 	                -->
+<!-- <complexType name="AudioSignalQualityType"												-->
+<!--    <complexContent>																	-->
+<!--       <extension base="mpeg7:AudioDSType">										        -->
+<!--          <sequence>																	-->
+<!--             <element name="Operator" type="mpeg7:PersonType" minOccurs="0"/>			-->
+<!--             <element name="UsedTool" type="mpeg7:CreationToolType" minOccurs="0"/>	    -->
+<!--             <element name="BackgroundNoiseLevel" type="mpeg7:BackgroundNoiseLevelType"/>  -->
+<!--             <element name="RelativeDelay" type="mpeg7:RelativeDelayType"/>	            -->
+<!--             <element name="Balance" type="mpeg7:BalanceType"/>			                -->
+<!--             <element name="DcOffset" type="mpeg7:DcOffsetType"/>			            -->
+<!--             <element name="CrossChannelCorrelation" type="mpeg7:CrossChannelCorrelationType"/>		-->
+<!--             <element name="Bandwidth" type="mpeg7:BandwidthType"/>		                -->
+<!--             <element name="TransmissionTechnology" type="mpeg7:TransmissionTechnologyType" minOccurs="0"/>	-->
+<!--             <element name="ErrorEventList" minOccurs="0">                              -->
+<!--               <complexType>                                                            -->
+<!--                  <sequence>                                                            -->
+<!--                    <element name="ErrorEvent" type="mpeg7:ErrorEventType" minOccurs="0" maxOccurs="unbounded"/>                              -->
+<!--                  </sequence>                                                           -->
+<!--               </complexType>                                                           -->
+<!--             </element>                                                                 -->
+<!--          </sequence>																	-->
+<!--             <attribute name="IsOriginalMono" type="boolean"/>							-->
+<!--             <attribute name="BroadcastReady" type="boolean" use="optional"/>			-->
+<!--       </extension>																		-->
+<!--    </complexContent>																	-->
+<!-- </complexType>																			-->
+
+<Mpeg7 xmlns="urn:mpeg:mpeg7:schema:2001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mpeg:mpeg7:schema:2001 .\AudioQ-2001.xsd">
+	<DescriptionUnit xsi:type="AudioSignalQualityType" IsOriginalMono="0" BroadcastReady="1">
+		<Operator>
+			<Name>
+ 				<GivenName>Joerg Bitzer</GivenName>
+			</Name>
+		</Operator>
+
+		<UsedTool>
+			<Tool/>
+		</UsedTool>
+
+ 		<BackgroundNoiseLevel channels ="1 2">
+ 			<Vector>-37.2281     -37.6493</Vector>
+ 		</BackgroundNoiseLevel>
+
+ 		<RelativeDelay  Confidence="0.98773" channels ="1 2">
+ 			<Vector>-0.29478</Vector>
+ 		</RelativeDelay>
+
+ 		<Balance channels ="1 2">
+ 			<Vector>-4.9338</Vector>
+ 		</Balance>
+
+ 		<DcOffset channels ="1 2">
+ 			<Vector>0.012083    0.010522</Vector>
+ 		</DcOffset>
+
+ 		<CrossChannelCorrelation channels ="1 2">
+ 			<Vector>0.32628</Vector>
+ 		</CrossChannelCorrelation>
+
+ 		<Bandwidth channels ="1 2">
+ 			<Vector>7988.8184      5878.5645</Vector>
+ 		</Bandwidth>
+
+		<TransmissionTechnology href="urn:mpeg:mpeg7:cs:TransmissionTechnologyCS">
+ 			<Name>Category0</Name>
+		</TransmissionTechnology>
+
+		<ErrorEventList>
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>DigitalZero</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">1</MediaRelIncrTimePoint>
+ 						<MediaIncrDuration mediaTimeUnit="PT1N44100F">13</MediaIncrDuration>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>SampleHold</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">1</MediaRelIncrTimePoint>
+ 						<MediaIncrDuration mediaTimeUnit="PT1N44100F">13</MediaIncrDuration>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">1</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">26686</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">27880</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">56592</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">59353</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">95879</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">135826</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">144023</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">215033</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">217780</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">223227</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">235563</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">264349</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">285960</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">294237</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">297003</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>1</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">314787</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">14</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">56606</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">59353</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">95879</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">144023</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">186338</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">215031</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">217782</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">223227</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">235565</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">285962</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+			<ErrorEvent>
+				<ErrorClass href="urn:mpeg:mpeg7:cs:ErrorClassCS">
+ 					<Name>Click</Name>
+				</ErrorClass>
+				<ChannelNo>2</ChannelNo>
+				<TimeStamp>
+ 						<MediaRelIncrTimePoint mediaTimeUnit="PT1N44100F" mediaTimeBase="../../MediaLocator[1]">297005</MediaRelIncrTimePoint>
+				</TimeStamp>
+ 				<Relevance>1</Relevance>
+ 				<DetectionProcess>automatic</DetectionProcess>
+ 				<Status>undefined</Status>
+				<Comment>
+					<FreeTextAnnotation>
+						any Comment to ErrorEvent
+					</FreeTextAnnotation>
+				</Comment>
+			</ErrorEvent>
+
+		</ErrorEventList>
+	</DescriptionUnit>
+
+</Mpeg7>

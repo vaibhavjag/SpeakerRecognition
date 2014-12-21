@@ -1,0 +1,6 @@
+
+
+[AudioSpectrumFlatness lo_edge hi_edge XMLFile ] = mpeg7ASF('a-a-c_song_mono.wav','PT30N1000F',250,16000,1,'a-a-c_song_mono_MPEG7_AudioSpectrumFlatness.xml');
+
+
+[AudioSpectrumFlatness lo_edge hi_edge XMLFile ] = mpeg7ASF('a-a-c_song_stereo.wav','PT30N1000F',250,16000,1,'a-a-c_song_stereo_MPEG7_AudioSpectrumFlatness.xml');

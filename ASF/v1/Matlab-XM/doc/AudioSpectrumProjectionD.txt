@@ -1,0 +1,33 @@
+Technique	AudioSpectrumProjectionType
+Document	ISO/IEC WD 15938-4
+Name		Michael Casey
+EMail		mkc@media.mit.edu
+Type		low-level audio descriptor extraction tool
+External Libraries 	--
+Related Ds/DSs	AudioSpectrumBasisType, SoundRecognitionModelType
+Used Ds/DSs	--
+Input		Wav file
+Extraction	Yes
+Client Appl	NA
+Summary		Extract low-dimensional spectral features from wav files 
+Strong Points 	-- 
+Limitations	Processes '.wav' audio files only.
+		 
+Known Problems 	--	
+Parameters	fileList, cell array list of filename strings of the audio files to process
+		AudioSpectrumBasis -- basis function matrix extracted by AudioSpectrumBasis
+		writeXML : boolean : flag for the generation of the XML file [0]
+		XMLFile (optional) : string : name of the generated XML file [empty]
+		
+
+Output		AudioSpectrumProjection : 2-D matrix:M*N matrix containing the basis functions
+					  	 - M=number of audio frames
+						 - N=number of basis functions
+		XMLFile : string : name of the generated XML file
+		
+Usage		1. run matlab
+		2. change the working directory to the directory containing the function
+		3. call the function 'AudioSpectrumProjection' with the required parameters
+
+Function call example :
+>> [AudioSpectrumProjection,  XMLFile] = AudioSpectrumProjection({'test.wav','test2.wav'},AudioSpectrumBasis,'PT10N1000F',1,'ASP.xml')

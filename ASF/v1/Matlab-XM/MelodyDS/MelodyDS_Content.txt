@@ -1,0 +1,12 @@
+The following elements are part of the Melody DS
+
+MelodyType  
+Meter 
+Scale 
+MelodyKey 
+MelodyContourType
+contourType
+beatType
+MelodySequence
+
+and is not yet implemented

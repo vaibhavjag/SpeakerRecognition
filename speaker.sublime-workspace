@@ -1,0 +1,638 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"else",
+				"else	else"
+			],
+			[
+				"max_a",
+				"max_array-min_array"
+			],
+			[
+				"min",
+				"min_array"
+			],
+			[
+				"fea",
+				"featureQuality"
+			],
+			[
+				"fe",
+				"featureQuality"
+			],
+			[
+				"feature",
+				"featureVector"
+			],
+			[
+				"get",
+				"getMFCCFeatures"
+			],
+			[
+				"p",
+				"probs"
+			],
+			[
+				"pia",
+				"piano1_features"
+			],
+			[
+				"p_",
+				"p_1_piano"
+			],
+			[
+				"Pla",
+				"PlaylistFactoryTest"
+			],
+			[
+				"pl",
+				"play"
+			],
+			[
+				"user1",
+				"user_1"
+			],
+			[
+				"user",
+				"user_2"
+			],
+			[
+				"us",
+				"user_1"
+			],
+			[
+				"new",
+				"newUser"
+			],
+			[
+				"ext",
+				"external_urls"
+			],
+			[
+				"co",
+				"TwitterController_TestGetTweets"
+			],
+			[
+				"t",
+				"t	test"
+			],
+			[
+				"if",
+				"ifmain	if __name__ == '__main__'"
+			],
+			[
+				"num",
+				"num"
+			],
+			[
+				"in",
+				"index"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"n",
+				"nlist"
+			],
+			[
+				"print",
+				"print_nlist"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "generateModel.m",
+			"settings":
+			{
+				"buffer_size": 1355,
+				"line_ending": "Windows",
+				"name": "generateModel.m"
+			}
+		},
+		{
+			"file": "normalizevalues.m",
+			"settings":
+			{
+				"buffer_size": 364,
+				"line_ending": "Windows",
+				"name": "function output = normalizevalues(array)"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ssm",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"SSJ",
+				"Set Syntax: Java"
+			],
+			[
+				"ssj",
+				"Set Syntax: Java"
+			],
+			[
+				"ss",
+				"Set Syntax: Java"
+			],
+			[
+				"ssja",
+				"Set Syntax: Java"
+			],
+			[
+				"ssjava",
+				"Set Syntax: Java"
+			],
+			[
+				"ssy java",
+				"Set Syntax: Java"
+			],
+			[
+				"ssy bas",
+				"Set Syntax: Shell Script (Bash)"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/cygwin64/home/Vaibhav/VirtualBox VMs/BigData_default_1418135664065_83555/Logs/VBox.log.1",
+		"/C/Users/Vaibhav/Documents/BigData/tvAnalytics/app/helperFunctions.py",
+		"/C/Users/Vaibhav/Documents/BigData/Vagrantfile",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/generatedata.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/getClassification2.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/InstrumentRecognition3.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/getFeatures2.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/getFeatures.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/getGaussian.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/getGMM.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/getMFCCFeatures.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/InstrumentRecognition2.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/ASF/v1/Matlab-XM/InstrumentTimbreDS/InstrumentTimbreDS.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/remove_silence.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/getTemporalFeatures.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/getASF.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/InstrumentRecognition.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/findMinima.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/timeFeatures.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/binarySearch.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/findMaxima.m",
+		"/C/Users/Vaibhav/Documents/LDM/microc/compile.ml",
+		"/C/Users/Vaibhav/Documents/LDM/microc/bytecode.ml",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/InstrumentRecognition2.asv",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/getClassification.m",
+		"/C/Users/Vaibhav/Documents/MATLAB/SpeakerRecognition/tp2.m",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/List",
+		"/C/Program Files (x86)/Neo4j Community/bin/install.properties",
+		"/C/Program Files (x86)/Neo4j Community/bin/neo4j-community.exe",
+		"/C/Program Files (x86)/Neo4j Community/bin/neo4j-community.vmoptions",
+		"/C/Users/Vaibhav/Documents/LDM/mahout-trunk/pom.xml",
+		"/C/Users/Vaibhav/Documents/LDM/yahooR4/ydata-ymovies-user-movie-ratings-train-v2_0.txt",
+		"/C/Users/Vaibhav/Documents/LDM/wikipedia.sh",
+		"/C/Program Files (x86)/Neo4j Community/.install4j/i4jparams.conf",
+		"/D/eclipse/workspace/yahoo_recommendation/yahoo1/yahoo_data_1",
+		"/C/Users/Vaibhav/Documents/LDM/hadoop-2.5.0/etc/hadoop/hdfs-site.xml",
+		"/C/Users/Vaibhav/Documents/LDM/hadoop-2.5.0/etc/hadoop/core-site.xml",
+		"/C/Users/Vaibhav/Documents/LDM/mahout-distribution-0.9/examples/bin/classify-20newsgroups.sh",
+		"/C/Users/Vaibhav/Documents/LDM/mahout-distribution-0.9/examples/bin/classify-wikipedia.sh",
+		"/C/Users/Vaibhav/Documents/LDM/mahout-trunk/examples/bin/classify-wikipedia.sh",
+		"/C/Users/Vaibhav/Documents/LDM/wikipedia_skmeans.sh",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/TweetModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/UserModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/controllers/SpotifyController.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/conf/routes",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/views/playlistDisplay.scala.html",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/views/index.scala.html",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/controllers/Application.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/controllers/PlaylistController.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/models/User.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/controllers/SentimentController.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/views/main.scala.html",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/models/Song.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/models/Playlist.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/LastFmControllerAddTrackToPlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/SentimentControllerGetSentimentTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/views/playlist.scala.html",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/LoginControllerLoginTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/LoginControllerLogoutTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/LoginHelperLastFmLoginTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/LoginHelperLogoutTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/LoginHelperTwitterOAuthTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/SpotifyControllerGetSongLinkTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/controllers/TwitterController.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/SongModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/MoodModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/LastFMPlaylistFactoryTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/SentimentFactoryTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/PlaylistControllerPostToTwitterTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/LastFmControllerCreatePlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/PlaylistModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/TwitterControllerPostToTwitterTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/PlaylistControllerPlaySongTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/PlaylistControllerDeletePlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/PlaylistControllerCreatePlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/PlaylistFactoryTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/models/Mood.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/UserControllerTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/UserControllerTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/PlaylistControllerPostToTwitterTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/TwitterControllerPostToTwitterTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/LoginHelperTwitterOAuthTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/LoginHelperLogoutTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/PlaylistControllerCreatePlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/LoginControllerTwitterOAuthTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/LoginControllerTwitterOAuthTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/PlaylistFactoryCreatePlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/TwitterControllerOauthUserTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/TwitterControllerGetTweetsTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/LoginControllerLoginTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/models/Tweet.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/controllers/LastFmController.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/build.sbt",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/conf/application.conf",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/test",
+		"/C/Users/Vaibhav/AppData/Local/Google/Chrome/User Data/Default/Local Storage/http_127.0.0.1_8888.localstorage",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/TwitterControllerCallbackTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/models/LastFMPlaylistFactory.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/models/AbstractPlaylistFactory.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/models/IPlaylist.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/models/ISong.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/controllers/LoginHelper.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/controllers/LoginController.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/app/controllers/UserController.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/TwitterControllerGetTweetsTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/old tests/controllerTest/LastFmControllerAddTrackToPlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/AbstractPlaylistFactoryTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/IPlaylistModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/ISongModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/PlaylistFactoryCreatePlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/SentimentFactoryCreateSentimentTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/SentimentFactoryCreateSentimentTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/PlaylistFactoryCreatePlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/PlayListModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/AbstractPlaylistFactoryTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/LastFMPlaylistFactoryTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/ISongModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/IPlaylistModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/MoodModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/PlayListModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/SongModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/TweetModelTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/controllerTest/TwitterControllerUnitTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/ApplicationTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/modelTest/UserUnitTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/LastFmControllerAddTrackToPlaylistTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/TwitterControllerGetTweetsTest.java",
+		"/C/Users/Vaibhav/Documents/ASE/ASEproject/repo/test/TwitterControllerPostToTwitterTest.java"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<open files>",
+			"<open files>,C:\\Users\\Vaibhav\\Documents\\MATLAB\\SpeakerRecognition",
+			"<open files>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"db_session.begin()",
+			"later",
+			"asf",
+			"j",
+			"features",
+			"];\n",
+			"y,",
+			"y",
+			"a(i)",
+			"a",
+			"Max",
+			"findMaxima",
+			"Maxima",
+			"maxima",
+			"Maxima",
+			"maxima",
+			"Maxima",
+			"maxima",
+			"Maxima",
+			"maxima",
+			"Maxima",
+			"maxima",
+			"Maxima",
+			"maxima",
+			"Maxima",
+			"MAXIMA",
+			"Maxima",
+			"remove_silence",
+			"wavread",
+			"j",
+			"piano_",
+			"mfcc = [mfcc,y];",
+			"15second",
+			"10second",
+			"filename = strcat(DIR,int2str(i),'.wav');",
+			"mfcc = [mfcc,y];",
+			"getMFCCFeatures(y,fs)",
+			"5second",
+			"InstrumentTimbreDS",
+			"if",
+			"for i = 1:10",
+			"violin",
+			"piano",
+			"end",
+			"num2str",
+			"Violin 2 ",
+			"violin2_features",
+			"Violin 2 ----",
+			"violin",
+			"Violin",
+			"violin",
+			"Violin",
+			"disp(strcat('violin probabilty : ',num2str(p(2))));\n",
+			"disp(strcat('violin probabilty : ',num2str(p(2))));",
+			"violin",
+			"singleModel",
+			"instruments",
+			"features",
+			"i",
+			"piano1_features",
+			"p_1",
+			"t",
+			"+",
+			"p1 ==",
+			"p1",
+			"piano",
+			"piano_mfcc_m",
+			"m",
+			"pianoc",
+			"violin_w",
+			"violin_v",
+			"violin_m",
+			"i",
+			"piano_w",
+			"piano_v",
+			"piano_m",
+			"MAHOUT_HOME",
+			"$MAHOUT_HOME",
+			"bydate",
+			"20news",
+			"20news-all",
+			"contentAsString",
+			"Result",
+			"callAction",
+			";\n",
+			"//Simulate POST request",
+			"Mood myMood",
+			"Mood myMood = new Mood(\"happy\");",
+			"Mood myMood = new Mood(\"\");",
+			"addTrackToPlaylist",
+			"fakeApplication",
+			"mySong",
+			"user.*\\.mood",
+			"mood",
+			"Mood",
+			"mood",
+			"Mood",
+			"mood",
+			"artist",
+			"title",
+			"Result",
+			"callAction(controllers.routes.ref.LastFmController.addTrackToPlaylist(mySong,myPL));",
+			"User",
+			"Mood_1",
+			"User",
+			"user_1",
+			"Users",
+			";\n",
+			"public",
+			"user_2",
+			"user1",
+			"myUser",
+			"mac",
+			"macintosh",
+			"System.out.println(",
+			"public",
+			"Task",
+			"Computer",
+			"For a valid song available on Spotify the required link should be generated but it was not",
+			"assertNotEquals",
+			"https://open.spotify.com/album/2rp5riHULWgrXPsDtsp1ir",
+			"assertThat",
+			")\n",
+			"Integer",
+			"mySong.",
+			"mySong",
+			"Integer",
+			"\");"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Mood",
+			"Playlist",
+			"Song",
+			"Tweet",
+			"\\1\\n\\n\\t@Test",
+			"\\1\\n\\t@Test",
+			"\\1\\n\\t",
+			"public \\1 \\2(){\\n\\t\\tAssert.fail(\"not implemented\");\\n\\t}",
+			"{\n		Assert.fail(\"not implemented\");\n	}",
+			"@Test\\n\\tpublic \\1 \\2()",
+			"TwitterController",
+			"SpotifyController",
+			"SentimentFactory",
+			"SentimentController",
+			"PlaylistFactory",
+			"PlaylistController",
+			"myPF",
+			"LoginController",
+			"LastFmController",
+			"public class \\1\\2Test ",
+			"= null;",
+			");\\n",
+			");",
+			"",
+			"modeloutput.txt",
+			"'",
+			"jsonObj",
+			"jsonArr",
+			" ",
+			"commId",
+			"jsonObj"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "generateModel.m",
+					"settings":
+					{
+						"buffer_size": 1355,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1355,
+								1355
+							]
+						],
+						"settings":
+						{
+							"auto_name": "generateModel.m",
+							"syntax": "Packages/Matlab/Matlab.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "normalizevalues.m",
+					"settings":
+					{
+						"buffer_size": 364,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								360,
+								360
+							]
+						],
+						"settings":
+						{
+							"auto_name": "function output = normalizevalues(array)",
+							"syntax": "Packages/Matlab/Matlab.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"wiki",
+				"wikipedia.sh"
+			],
+			[
+				"wikipedia.sh",
+				"wikipedia.sh"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 279.0,
+	"status_bar_visible": true
+}

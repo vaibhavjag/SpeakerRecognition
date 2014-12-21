@@ -1,0 +1,41 @@
+Technique	AudioSpectrumEnvelopeType
+Document	ISO/IEC WD 15938-4
+Name		Melanie Jackson, Thibaut Sacreste University of Wollongong, Australia
+EMail		tas48@uow.edu.au
+Type		low-level audio descriptor extraction tool
+External Libraries  	--
+Related Ds/DSs	--
+Used Ds/DSs	--
+Input		Wav file
+Extraction	Yes
+Client Appl	NA
+Summary	This component is the AudioSpectrumEnvelope descriptor extraction tool
+Strong Points 	--	
+Limitations	Only process '.wav' and '.au' audio files.
+		The whole audio file is processed
+Known Problems 	--	
+Parameters	audioFile : string : name of the audio file to process 
+		hopSize : string : hopsize in the mpeg7 specified format
+		attributegrp : struct
+			attributegrp.loEdge : float : frequency low edge
+			attributegrp.hiEdge : float : frequency high edge
+			attributegrp.octaveResolution : string : octave resolution in the mpeg7 specified format
+		writeXML : boolean : flag for the generation of the XML file
+		XMLFile (optional) : string : name of the generated XML file
+		map (optional) : map from linear to log bands
+
+Output		AudioSpectrumEnvelope : 2-D matrix : M*N matrix containing the ASE values with:
+					  	 - M=number of audio frames
+						 - N=number of frequency bands
+		attributegrp : struct : same as input (they can be modified by the function)
+		XMLFile : string : name of the generated XML file
+		map (optional) : map from linear to log bands
+
+Usage		1. run matlab
+		2. change the working directory to the directory containing the function
+		3. call the function 'mpeg7ASE' with the required parameters
+
+Function call example 
+
+>> attributegrp=struct('loEdge',62.5,'hiEdge',16000,'octaveResolution','1/8');
+>> [AudioSpectrumEnvelope, attributegrp, XMLFile, map] = AudioSpectrumEnvelopeD('test.wav','PT10N1000F',attributegrp,1,'ASE.xml')

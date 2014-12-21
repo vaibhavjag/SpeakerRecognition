@@ -1,0 +1,71 @@
+Technique	HarmonicInstrumentTimbreType
+Document	ISO/IEC WD 15938-4
+Name		Geoffroy Peeters, Patrice Tisserand - Ircam, Paris, France
+EMail		peeters@ircam.fr, tisseran@ircam.fr
+Type		high-level audio descriptor extraction tool
+External Libraries 	--
+Related Ds/DSs	--
+Used Ds/DSs	--
+Input		Wav file
+Extraction	Yes
+Client Appl	NA
+Summary		This component extract all HarmonicInstrumentTimbre low-level descriptors: 
+		HarmonicSpectralCentroidType, 
+		HarmonicSpectralDeviationType, 
+		HarmonicSpectralSpreadType, 
+		HarmonicSpectralVariationType, 
+		LogAttackTimeType
+
+		The low-level descriptors are available as 
+		-output of the function 
+		-or/and written in an .xml file
+
+Strong Points 	This document corresponds to timbreExtractionMatlab_v2.11cor.zip. (2002/08/01)
+		The following functions are used 
+
+		HarmonicInstrumentTimbreDS.m, 
+		-> h_mpeg7init.m, 
+		-> h_fundfreq.m, 
+		-> h_spectre.m, 
+		-> h_harmo.m, 
+		   -> h_harmopic.m, 
+		-> h_harmoiParam.m, 
+		   -> HarmonicSpectralCentroidD.m, 
+		   -> h_specenv.m, 
+		   -> HarmonicSpectralDeviationD2.m, 
+		   -> HarmonicSpectralSpreadD.m, 
+		   -> HarmonicSpectralVariationD.m, 
+		-> h_energy.m, 
+		-> LogAttackTimeD.m
+		-> h_HITtoXML.m
+
+Changes from version 2.1.: 
+		-debugging of h_mpeg7init.m
+		-added xml output, 
+		-renaming of the files according to w5046, 
+		-corrigendum version for HarmoniSpectralDeviation (w5048)
+
+		
+Limitations	Only process '.wav' files.
+		The whole audio file is processed
+
+Known Problems 	--	
+
+Parameters	audioFile : string : name of the audio file to process 
+		
+		
+Output	Descriptors values for the audio file:
+		HarmonicSpectralCentroid, 
+		HarmonicSpectralDeviation, 
+		HarmonicSpectralSpread, 
+		HarmonicSpectralVariation, 
+		LogAttackTime
+
+
+Usage		1. run matlab
+		2. change the working directory to the directory containing the function
+		3. call the function 'HarmonicInstrumentTimbreDS' with the required parameters
+
+Function call example 
+
+>> [HarmonicSpectralCentoid, HarmonicSpectralDeviation, HarmonicSpectralSpread, HarmonicSpectralVariation, LogAttackTime] = HarmonicInstrumentTimbreDS('test.wav', 1);

@@ -1,0 +1,15 @@
+% To run this script from the Matlab-XM directory (the startup directory)
+% type:
+%
+% >>addpath('../Conformance/AudioSpectrumProjectionD');
+% >>extractAudioSpectrumProjectionXML
+
+filename = '../Conformance/Signals/Music/mkcJazzTrio.wav';
+attrGrp.loEdge=62.5;
+attrGrp.hiEdge=8000;
+attrGrp.octaveResolution='1/4';
+[ASE] = AudioSpectrumEnvelopeD(filename,'PT10N1000F',attrGrp);
+[ASB,env] = AudioSpectrumBasisD(ASE,20);
+[ASP,maxenv] = AudioSpectrumProjectionD(ASE,ASB,'outputFile','../Conformance/AudioSpectrumProjectionD/mkcJazzTrio_ASPd.xml');
+
+    

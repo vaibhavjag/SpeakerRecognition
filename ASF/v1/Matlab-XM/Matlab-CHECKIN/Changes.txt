@@ -1,0 +1,50 @@
+
+Changes Matlab software
+
+Dir:	Dir:	Files:
+Matlab-XM:
+
+	h_Common:
+		h_mpeg7init.m			update
+		h_fraction.m			reactivated
+	AudioSpectrumFlatnessD:
+		AudioSpectrumFlatnessD		update
+	doc:
+		AudioSpectrumFlatnessD.txt	update
+		AudioSpectrumCentroidD.txt	update
+		AudioSpectrumSpreadD.txt 	update
+		AudioSpectrumEnvelopeD.txt	update
+	
+	AudioSpectrumEnvelopeD:
+		AudioSpectrumEnvelopeD		update
+
+Conformance:
+
+	AudioSpectrumFlatnessD:
+		CallMatlabFunc_AudioSpectrumFlatness	can be removed
+		extract_AudioSpectrumFlatness.m	     	can be removed
+		xtrxml_AudioSpectrumFlatnessD.m  	new	
+
+	AudioSignatureDS:
+		xtrxml_AudioSignatureDS.m		update
+
+	AudioSpectrumCentroidD:
+		xtrxml_AudioSpectrumCentroidD.m 	new
+
+	AudioSpectrumSpreadD:
+		xtrxml_AudioSpectrumSpreadD 		new
+
+	AudioSpectrumEnvelopeD:
+		xtrxml_AudioSpectrumEnvelopeD 		new
+
+
+
+If you have questions about the modifications, do not hesitate to contact me:
+==================================================================
+ Dipl.-Ing. Thorsten Kastner            mailto:ksr@iis.fhg.de
+ Fraunhofer Institut
+ Integrierte Schaltungen                Phone :+49 (0)9131 776-348
+ Dept. Audio                            Fax   :+49 (0)9131/776-398
+ Am Wolfsmantel 33                      http://www.iis.fhg.de/amm/
+ D-91058 Erlangen, Germany
+==================================================================

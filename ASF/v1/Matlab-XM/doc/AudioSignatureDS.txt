@@ -1,0 +1,38 @@
+Technique	AudioSignatureType
+Document	ISO/IEC WD 15938-4
+Name		Juergen Herre, Thorsten Kastner -  Fraunhofer Institute Erlangen
+EMail		(hrr,ksr)@iis.fhg.de
+Type		high-level audio descriptor extraction tool
+External Libraries 	--
+Related Ds/DSs	AudioSpectrumFlatnessType
+Used Ds/DSs	AudioSpectrumFlatnessType
+Input		'.wav' or '.au' file
+Extraction	Yes
+Client Appl	NA
+Summary		This component is the AudioSignature extraction tool
+Strong Points 	Provides a unique content identifier for the purpose of robust automatic
+		identification of audio signals 	
+Limitations	Only process '.wav' and '.au' audio files.
+		The whole audio file is processed
+Known Problems 	--	
+Parameters	audioFile : string : name of the audio file to process 
+		hiEdge : number : Upper edge frequency 
+		decim  : number : Scale Ratio (see SeriesOfVectorBinaryType)
+		writeXML : boolean : flag for the generation of the XML file
+		XMLFile (optional) : string : name of the generated XML file
+		
+Output	as_mean : 2-D matrix : M*N matrix containing the AudioSignature mean values with:
+					  	 - M=number of mean vectors
+						 - N=number of frequency bands
+		as_var  : 2-D matrix : M*N matrix containing the AudioSignature variance values with:
+					  	 - M=number of variance vectors
+						 - N=number of frequency bands
+		hiedge  : number : Upper edge frequency 					
+		XMLFile : string : name of the generated XML file
+		
+Usage		1. run matlab
+		2. change the working directory to the directory containing the function
+		3. call the function 'AudioSignature' with the required parameters
+
+Function call example 
+>> [Mean, Var,hiedge, XMLFile] = AudioSignatureDS( 'test.wav', 4000,32, 1, 'AudioSignature.xml'); 

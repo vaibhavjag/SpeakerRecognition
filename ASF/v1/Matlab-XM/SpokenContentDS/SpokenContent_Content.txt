@@ -1,0 +1,15 @@
+The following elements are part of the Spoken Content:
+
+SpokenContentHeaderType
+SpeakerInfoType
+SpokenContentIndexEntryType
+ConfusionCountType
+WordType, PhoneType, WordLexiconIndexType and PhoneLexiconIndexType
+LexiconType
+WordLexiconType
+phoneticAlphabetType
+PhoneLexiconType
+SpokenContentLatticeType
+SpokenContentLinkType
+
+and can be found in the XM

@@ -1,0 +1,33 @@
+Technique	AUdioSpectrumCentroidType
+Document	ISO/IEC WD 15938-4
+Name		Melanie Jackson, Thibaut Sacreste University of Wollongong, Australia
+EMail		tas48@uow.edu.au
+Type		low-level audio descriptor extraction tool
+External Libraries  	--
+Related Ds/DSs	--
+Used Ds/DSs	--
+Input		Wav file
+Extraction	Yes
+Client Appl	NA
+Summary		This component is the AudioSpectrumCentroid descriptor extraction tool
+Strong Points 	--	
+Limitations	Only process '.wav' and '.au' audio files.
+		The whole audio file is processed
+Known Problems 	--	
+Parameters	audioFile : string : name of the audio file to process 
+		hopSize : string : hopsize in the mpeg7 specified format
+		writeXML : boolean : flag for the generation of the XML file
+		XMLFile (optional) : string : name of the generated XML file
+		
+Output		AudioSpectrumCentroid : vector : vector of length N containing the values of the ASC with:
+					     - N=number of audio frames
+		XMLFile : string : name of the generated XML file
+
+Usage		1. run matlab
+		2. change the working directory to the directory containing the function
+		3. call the function 'mpeg7ASC' with the required parameters
+
+Function call example 
+
+>> [AudioSpectrumCentroid, XMLFile] = AudioSpectrumCentroidD('test.wav','PT10N1000F',1,'ASC.xml')
+

@@ -1,0 +1,9 @@
+% To run this script from the Matlab-XM directory (the startup directory)
+% type:
+%
+% >>addpath('../Conformance/SoundModelDS');
+% >>addpath('../Conformance/SoundModelStatePathD');
+% >>extractSoundModelXML
+% >>extractSoundModelStatePathXML
+filename = '../Conformance/Signals/Music/mkcJazzTrio.wav';
+[Path,logLike]=SoundModelStatePathD(filename,SM,'outputFile',);
